@@ -1,0 +1,12 @@
+.customLogo{
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.collapse{justify-content: center;}
+.navbar-nav{
+    width: 100%;
+  /* align-content: center;
+  align-items: center; */
+  justify-content:space-around;
+}

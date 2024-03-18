@@ -1,0 +1,11 @@
+.form-group{
+    align-self: center;
+}
+.error{
+    border-color: red;
+}
+/* .login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
