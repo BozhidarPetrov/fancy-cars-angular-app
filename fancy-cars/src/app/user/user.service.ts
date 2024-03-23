@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class UserService implements OnDestroy{
 
-  private user$$ = new BehaviorSubject<RegisteredUser | undefined>(undefined);
+   user$$ = new BehaviorSubject<RegisteredUser | undefined>(undefined);
 
   user$ = this.user$$.asObservable();
 
@@ -44,6 +44,8 @@ export class UserService implements OnDestroy{
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+
+
   
   register(
     username: string,
@@ -60,6 +62,12 @@ export class UserService implements OnDestroy{
       }).pipe(tap((user) => this.user$$.next(user)));
 
       
+  }
+
+  getUser(id:string | null){
+    return this.http.post<RegisteredUser>(`http://localhost:3030/users/profile`, {
+      id,
+    })
   }
 
   ngOnDestroy(): void {

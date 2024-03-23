@@ -3,6 +3,7 @@ import { UserService } from '../../user/user.service';
 import { CookieManagerService } from '../../cookie-manager.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { RegisteredUser } from '../../types/registeredUser';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  userEmail: string | undefined;
+  username: string | undefined;
   hasUser:boolean | undefined;
  private subscription: Subscription | undefined;
   
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.subscription = this.cookieManager.isLoggedIn$.subscribe(boolean=>{ this.hasUser = boolean})
-    this.subscription = this.userService.user$.subscribe(user=> {this.userEmail = user?.email})
+    this.subscription = this.userService.user$.subscribe(user=> {this.username = user?.username})
+
   }
   ngOnDestroy(): void {
 

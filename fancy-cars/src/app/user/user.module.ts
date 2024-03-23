@@ -14,7 +14,7 @@ import { MyCarsComponent } from './my-cars/my-cars.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    MyCarsComponent
+    MyCarsComponent,
   ],
   imports: [
     CommonModule,

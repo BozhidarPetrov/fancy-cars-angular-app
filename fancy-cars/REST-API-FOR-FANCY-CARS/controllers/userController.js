@@ -9,7 +9,7 @@ const attachCookie = (token, res) => {
         secure: true,
     })
 }
-router.post('/register', isGuest(), async (req, res) => {
+router.post('/register', async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
@@ -31,7 +31,7 @@ router.post('/register', isGuest(), async (req, res) => {
     }
 });
 
-router.post('/login', isGuest(), async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const result = await login(req.body.email.trim(), req.body.password.trim());
         console.log(result)
@@ -48,8 +48,7 @@ router.post('/login', isGuest(), async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        const error = mapErrors(err);
-        res.status(400).json({ message: error });
+        res.status(400).json(err);
     }
 });
 
@@ -58,9 +57,10 @@ router.get('/logout', (req, res) => {
     res.status(204).end();
 });
 
-router.get('/profile',  async (req, res) => {
-    const user = await findUserById();
-   
+router.post('/profile',  async (req, res) => {
+    const id = req.body.id;
+    const user = await findUserById(id);
+   res.json(user)
     })
 
 module.exports = router;

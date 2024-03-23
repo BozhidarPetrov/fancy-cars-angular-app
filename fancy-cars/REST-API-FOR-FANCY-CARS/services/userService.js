@@ -52,6 +52,7 @@ function logout(token) {
 
 function createSession(user) {
     return {
+        username: user.username,
         email: user.email,
         _id: user._id,
         accessToken: jwt.sign({

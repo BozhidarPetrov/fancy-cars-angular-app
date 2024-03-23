@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../car.service';
-import { Subscription } from 'rxjs';
+import {CarFromMongo} from '../../types/CarFromMongo'
 
 @Component({
   selector: 'app-all-cars',
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './all-cars.component.css'
 })
 export class AllCarsComponent implements OnInit{
-allCars: [{}] = [{}];
+allCars: CarFromMongo[] = [];
   constructor(private carService: CarService){}
 
 ngOnInit(): void {
@@ -18,7 +18,7 @@ ngOnInit(): void {
       this.allCars = allCars;
     },
     error: (err) => {
-      console.error(`Error: ${err}`);
+      console.error(`Error: ${err.message}`);
     },
   });
 

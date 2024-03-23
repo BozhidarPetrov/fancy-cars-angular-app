@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 
  function getAll() {
-    return  Car.find();
+    return  Car.find().populate('owner').lean();
 }
 
 async function create(car) {
@@ -17,13 +17,14 @@ async function create(car) {
 
 function getById(id) {
     return Car.findById(id).lean()
-    .populate('likes')
+    .populate('owner')
 
 }
 
 async function update(id, car) {
     const existing = await Car.findById(id);
 
+    existing.description = car.description;
     existing.brand = car.brand;
     existing.model = car.model;
     existing.engine = car.engine;
@@ -32,6 +33,7 @@ async function update(id, car) {
     existing.color = car.color;
     existing.year = car.year;
     existing.image = car.image;
+    existing.owner = car.owner;
     
 
     await existing.save();
@@ -40,13 +42,6 @@ async function update(id, car) {
 }
 
 async function deleteById(carId) {
-    const car = await Car.findById(carId);
-    
-    const user = await User.findById(car.ownerId);
-let index = user.ownerOf.indexOf(carId);
-user.ownerOf.splice(index, 1);
-await user.save();
-
 
 await Car.findByIdAndDelete(carId);
 

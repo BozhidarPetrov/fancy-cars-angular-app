@@ -9,6 +9,8 @@ import { AllCarsComponent } from './cars/all-cars/all-cars.component';
 import { AddNewComponent } from './cars/add-new/add-new.component';
 import { SearchComponent } from './cars/search/search.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DetailsComponent } from './cars/details/details.component';
+import { EditComponent } from './cars/edit/edit.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -27,6 +29,9 @@ const routes: Routes = [
       { path: 'all', component: AllCarsComponent },
       { path: 'add', component: AddNewComponent },
       { path: 'search', component: SearchComponent },
+      { path: 'details', component: DetailsComponent },
+      { path: ':carId/details', component: DetailsComponent },
+      { path: ':carId/edit', component: EditComponent },
     ],
   },
   { path: '404', component: NotFoundComponent },

@@ -1,6 +1,35 @@
-<h1>ADD NEW CAR FORM</h1>
-<div>{{owner | json}}</div>
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1>ADD NEW CAR</h1>
+    <h2>ADD YOUR AWESOME CAR BY USING THE BELOW FORM: </h2>
 <form #form="ngForm" (ngSubmit)="onAddNewCarSubmitHandler(form)">
+
+  <div class="form-group">
+    <label for="exampleInputBrand">Description</label>
+    <input
+      type="string"
+      class="form-control"
+      id="exampleInputDescription"
+      aria-describedby="descriptionHelp"
+      name="description"
+      placeholder="Car description"
+      required
+      minlength="10"
+      ngModel
+      #inputDescription="ngModel"
+    />
+
+    <div *ngIf="inputDescription.touched">
+      <p class="error" *ngIf="inputDescription.errors?.['required']">
+        Description is required!
+      </p>
+      <p class="error" *ngIf="inputDescription.errors?.['minlength']">
+        Description length must be at least
+        {{inputDescription.errors?.['minlength']['requiredLength']}}!
+      </p>
+    </div>
+  </div>
+
   <div class="form-group">
     <label for="exampleInputBrand">Brand</label>
     <input
@@ -203,3 +232,7 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+  </div>
+</section>
+

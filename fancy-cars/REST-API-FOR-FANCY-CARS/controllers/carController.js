@@ -6,14 +6,21 @@ const preload = require('../middlewares/preload');
 
 router.get('/all', async (req, res) => {
     const allCars = await api.getAll();
- 
+    res.json(allCars)
 })
+
+
+// router.get('/test', async (req, res) => {
+//     const allCars = await api.getAll();
+//     res.json(allCars)
+// })
 
 router.post('/create',  async (req, res) => {
     console.log(req);
     // isAuth(),
 
     const car = {
+        description: req.body.description,
        brand: req.body.brand,
         model: req.body.model,
         engine: req.body.engine,
@@ -43,14 +50,11 @@ router.post('/create',  async (req, res) => {
     }
 });
 
-router.get('/:id', preload(), (req, res) => {
- 
-});
-
-router.put('/:id', preload(), isOwner(), async (req, res) => {
+router.post('/:id/edit', async (req, res) => {
     const carId = req.params.id;
     const car = {
-        brand: req.body.brand,
+        description: req.body.description,
+       brand: req.body.brand,
         model: req.body.model,
         engine: req.body.engine,
         horsepower: req.body.horsepower,
@@ -58,19 +62,56 @@ router.put('/:id', preload(), isOwner(), async (req, res) => {
         color: req.body.color,
         year: req.body.year,
         image: req.body.image,
+        owner: req.body.owner
+
     }
 
     try {
+
         const result = await api.update(carId, car);
-        res.json(result);
+        res.status(201).json(result);
+
     } catch (err) {
-        console.error(err.message);
-        const error = mapErrors(err);
-        res.status(400).json({ message: error });
+        
+      
+         res.status(400).json( err );
+        
+        
+        
     }
+    
+    });
+
+router.get('/:id/details', async (req, res) => {
+const carId = req.params.id;
+ const car = await api.getById(carId);
+ res.json(car);
 });
 
-router.delete('/:id', preload(), isOwner(), async (req, res) => {
+// router.put('/:id', preload(), isOwner(), async (req, res) => {
+//     const carId = req.params.id;
+//     const car = {
+//         brand: req.body.brand,
+//         model: req.body.model,
+//         engine: req.body.engine,
+//         horsepower: req.body.horsepower,
+//         fuel: req.body.fuel,
+//         color: req.body.color,
+//         year: req.body.year,
+//         image: req.body.image,
+//     }
+
+//     try {
+//         const result = await api.update(carId, car);
+//         res.json(result);
+//     } catch (err) {
+//         console.error(err.message);
+//         const error = mapErrors(err);
+//         res.status(400).json({ message: error });
+//     }
+// });
+
+router.get('/:id/delete', async (req, res) => {
     try {
         const carId = req.params.id;
 
@@ -78,14 +119,14 @@ router.delete('/:id', preload(), isOwner(), async (req, res) => {
         res.status(204).end();
     } catch (err) {
         console.error(err.message);
-        const error = mapErrors(err);
-        res.status(400).json({ message: error });
+        res.status(400).json(err.message);
     }
 });
-router.post('/:id/like', isAuth(), async (req, res) => {
+
+router.post('/:id/like', async (req, res) => {
     const carId = req.params.id;
 
-    const userId = req.user._id;
+    const userId = req.body.userId;
 
 
     try {
@@ -93,8 +134,7 @@ router.post('/:id/like', isAuth(), async (req, res) => {
         res.json(result);
     } catch (err) {
         console.error(err.message);
-        const error = mapErrors(err);
-        res.status(400).json({ message: error });
+        res.status(400).json(err);
     }
 
 

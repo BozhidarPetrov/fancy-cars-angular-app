@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CookieManagerService } from '../../cookie-manager.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,13 +33,8 @@ export class LoginComponent {
       const token = this.userService.user?.accessToken;
       if (token) {
         this.cookieService.set('authToken', token);
-        localStorage.setItem('id', user?._id)
-       this.cookieManager.setCookiesState(token)
-      
-
-       
-       console.log('After login - beh.subj. is', this.cookieManager.isLoggedIn$);
-       
+        localStorage.setItem('id', user?._id);
+        this.cookieManager.setCookiesState(token);
       }
       this.router.navigate(['/']);
     });

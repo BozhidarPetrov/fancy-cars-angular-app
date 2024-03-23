@@ -2,8 +2,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <img class="customLogo" src="../../../assets/smallLogo.jpg" routerLink="/"/>
   <div>
-    <p *ngIf="userEmail">Hello, {{userEmail}}!</p>
-    <p *ngIf="!userEmail">Hello, Guest!</p>
+    <p *ngIf="hasUser">Hello, {{username}}!</p>
+    <!-- <p *ngIf="!userEmail">Hello, Guest!</p> -->
   </div>  
   <button
     class="navbar-toggler"

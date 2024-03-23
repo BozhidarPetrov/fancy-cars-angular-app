@@ -1,18 +1,121 @@
-<!-- <div class="input-group">
-  <div class="form-outline" data-mdb-input-init>
-    <input id="search-input" type="search" id="form1" class="form-control" />
-    <label class="form-label" for="form1">Search</label>
-  </div>
-  <button id="search-button" type="button" class="btn btn-primary">
-    <i class="fas fa-search"></i>
-  </button>
-</div> -->
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1>You are looking for a particular car?</h1>
+    <h2>Use our awesome search function to find it!</h2>
 
-
-<div>
-    <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit" (click)="search()" >Search</button>
+    <h2>Enter car brand here:</h2>
+    <div>
+      <form
+        #brandForm="ngForm"
+        class="d-flex"
+        role="search"
+        (ngSubmit)="searchBrand(brandForm)"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Brand..."
+          aria-label="Search"
+          name="brand"
+          ngModel
+          #inputBrandSearch="ngModel"
+        />
+        <button
+          class="btn btn-outline-success"
+          style="color: white; background-color: rgb(4, 4, 138)"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
+    </div>
 
-</div>
+    <h2>Enter car model here:</h2>
+    <div>
+      <form
+        #modelForm="ngForm"
+        class="d-flex"
+        role="search"
+        (ngSubmit)="searchModel(modelForm)"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Model..."
+          aria-label="Search"
+          name="model"
+          ngModel
+          #inputModelSearch="ngModel"
+        />
+        <button
+          class="btn btn-outline-success"
+          style="color: white; background-color: rgb(4, 4, 138)"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+
+    <h1  *ngIf="!hasResult">Unfortunately Nothing was found!</h1>
+
+    <div *ngIf="filteredCars.length > 0">
+      <div class="container mt-5">
+        <div class="row">
+  
+          <div class="col-md-3" *ngFor="let car of filteredCars">
+            <div class="card">
+              <div class="image-container">
+                <div class="first">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="wishlist"><i class="fa fa-heart-o"></i></span>
+                  </div>
+                </div>
+  
+                <img
+                  src="{{car.image}}"
+                  class="img-fluid rounded thumbnail-image"
+                />
+              </div>
+  
+              <div class="product-detail-container p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="dress-name">{{car.brand}} {{car.model}}</h5>
+                  <h5 class="dress-name">Added by: {{car.owner.username}}</h5>
+                </div>
+  
+                <div
+                  class="d-flex justify-content-between align-items-center pt-1"
+                >
+                  <div class="color-select d-flex">
+                    <input type="button" name="grey" class="btn creme" />
+  
+                    <input
+                      type="button"
+                      name="darkblue"
+                      class="btn darkblue ml-2"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mt-3">
+              <div class="card voutchers">
+                <div class="voutcher-divider">
+                  <div class="voutcher-left text-center">
+                    <button routerLink="/cars/{{car._id}}/details">DETAILS</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          
+  
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

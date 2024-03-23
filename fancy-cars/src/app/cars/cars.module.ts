@@ -6,6 +6,7 @@ import { AllCarsComponent } from './all-cars/all-cars.component';
 import { AddNewComponent } from './add-new/add-new.component';
 import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -14,7 +15,8 @@ import { SearchComponent } from './search/search.component';
     AllCarsComponent,
     AddNewComponent,
     DetailsComponent,
-    SearchComponent
+    SearchComponent,
+    EditComponent,
   ],
   imports: [
     CommonModule, FormsModule, AppRoutingModule

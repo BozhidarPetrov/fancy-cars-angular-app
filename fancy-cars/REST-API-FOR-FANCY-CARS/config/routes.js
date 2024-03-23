@@ -1,10 +1,10 @@
 const carController = require('../controllers/carController')
 const userController = require('../controllers/userController')
+const router = require("express").Router();
 
 
 
-module.exports = (app) => {
-    app.use(carController);
-    app.use(userController);
+    router.use('/cars',carController);
+    router.use('/users',userController);
 
-}
+    module.exports = router;

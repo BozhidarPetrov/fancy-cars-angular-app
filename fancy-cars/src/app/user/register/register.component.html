@@ -1,109 +1,118 @@
-<h1>REGISTER FORM</h1>
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1>Hello, Fancy Cars Guest!</h1>
+    <h2>You can register by using the below form:</h2>
+    <form #form="ngForm" (ngSubmit)="onRegisterSubmitHandler(form)">
+      <div class="form-group">
+        <label for="exampleInputUsername1">Username</label>
+        <input
+          type="username"
+          class="form-control"
+          id="exampleInputUsername1"
+          aria-describedby="usernameHelp"
+          name="username"
+          placeholder="Enter username"
+          required
+          minlength="4"
+          ngModel
+          #inputUsername="ngModel"
+        />
+    
+        <div *ngIf="inputUsername.touched">
+          <p class="error" *ngIf="inputUsername.errors?.['required']">
+            Username is required!
+          </p>
+          <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+            Username's length must be at least
+            {{inputUsername.errors?.['minlength']['requiredLength']}}!
+          </p>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          name="email"
+          placeholder="Enter email"
+          required
+          ngModel
+          #inputEmail="ngModel"
+        />
+    
+        <div *ngIf="inputEmail.touched">
+          <p class="error" *ngIf="inputEmail.errors?.['required']">
+            Email is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="!emailValidatorFn(inputEmail.value) && !inputEmail.errors?.['required']"
+          >
+            Email is invalid!
+          </p>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="password"
+          placeholder="Password"
+          required
+          minlength="4"
+          ngModel
+          #inputPassword="ngModel"
+        />
+    
+        <div *ngIf="inputPassword.touched">
+          <p class="error" *ngIf="inputPassword.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+            Password's length must be at least
+            {{inputPassword.errors?.['minlength']['requiredLength']}}!
+          </p>
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="exampleInputRePassword1">Re-Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputRePassword1"
+          name="rePassword"
+          placeholder="Re-Password"
+          required
+          ngModel
+          #inputRePassword="ngModel"
+        />
+    
+        <div *ngIf="inputRePassword.touched">
+          <p class="error" *ngIf="inputRePassword.errors?.['required']">
+            Re-Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="!passwordValidatorFn(inputPassword.value, inputRePassword.value) && !inputRePassword.errors?.['required']"
+          >
+            Passwords must match!
+          </p>
+        </div>
+      </div>
+    
+      <button type="submit" class="btn btn-primary">Submit</button>
 
-<form #form="ngForm" (ngSubmit)="onRegisterSubmitHandler(form)">
-  <div class="form-group">
-    <label for="exampleInputUsername1">Username</label>
-    <input
-      type="username"
-      class="form-control"
-      id="exampleInputUsername1"
-      aria-describedby="usernameHelp"
-      name="username"
-      placeholder="Enter username"
-      required
-      minlength="4"
-      ngModel
-      #inputUsername="ngModel"
-    />
+      <h2 routerLink="/user/login" style="cursor: pointer; color:rgba(255, 162, 0, 0.804);">Already registered? Click here to login!</h2>
 
-    <div *ngIf="inputUsername.touched">
-      <p class="error" *ngIf="inputUsername.errors?.['required']">
-        Username is required!
-      </p>
-      <p class="error" *ngIf="inputUsername.errors?.['minlength']">
-        Username's length must be at least
-        {{inputUsername.errors?.['minlength']['requiredLength']}}!
-      </p>
-    </div>
+    </form>
   </div>
+</section>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      name="email"
-      placeholder="Enter email"
-      required
-      ngModel
-      #inputEmail="ngModel"
-    />
 
-    <div *ngIf="inputEmail.touched">
-      <p class="error" *ngIf="inputEmail.errors?.['required']">
-        Email is required!
-      </p>
-      <p
-        class="error"
-        *ngIf="!emailValidatorFn(inputEmail.value) && !inputEmail.errors?.['required']"
-      >
-        Email is invalid!
-      </p>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputPassword1"
-      name="password"
-      placeholder="Password"
-      required
-      minlength="4"
-      ngModel
-      #inputPassword="ngModel"
-    />
-
-    <div *ngIf="inputPassword.touched">
-      <p class="error" *ngIf="inputPassword.errors?.['required']">
-        Password is required!
-      </p>
-      <p class="error" *ngIf="inputPassword.errors?.['minlength']">
-        Password's length must be at least
-        {{inputPassword.errors?.['minlength']['requiredLength']}}!
-      </p>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputRePassword1">Re-Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputRePassword1"
-      name="rePassword"
-      placeholder="Re-Password"
-      required
-      ngModel
-      #inputRePassword="ngModel"
-    />
-
-    <div *ngIf="inputRePassword.touched">
-      <p class="error" *ngIf="inputRePassword.errors?.['required']">
-        Re-Password is required!
-      </p>
-      <p
-        class="error"
-        *ngIf="!passwordValidatorFn(inputPassword.value, inputRePassword.value) && !inputRePassword.errors?.['required']"
-      >
-        Passwords must match!
-      </p>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
