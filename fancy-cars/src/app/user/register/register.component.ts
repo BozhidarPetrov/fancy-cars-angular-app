@@ -15,6 +15,7 @@ import { CookieManagerService } from '../../cookie-manager.service';
 export class RegisterComponent {
   emailValidatorFn = emailValidator;
   passwordValidatorFn = passwordValidator;
+  backendErrorMsg: string | undefined;
 
   constructor(
     private userService: UserService,
@@ -35,20 +36,35 @@ export class RegisterComponent {
       return;
     }
 
-    this.userService
-      .register(username, email, password, rePassword)
-      .subscribe((user) => {
+    this.userService.register(username, email, password, rePassword).subscribe({
+      next: (user) => {
         const token = this.userService.user?.accessToken;
         if (token) {
           this.cookieService.set('authToken', token);
           localStorage.setItem('id', user?._id);
-          this.cookieManager.setCookiesState(token)
-       
-          
-          
+          this.cookieManager.setCookiesState(token);
         }
 
         this.router.navigate(['/']);
-      });
+      },
+      error: (error) => {
+        this.backendErrorMsg = error.error;
+        console.log(error.error);
+      },
+    });
+
+    // this.userService
+    //   .register(username, email, password, rePassword)
+    //   .subscribe((user) => {
+    //     const token = this.userService.user?.accessToken;
+    //     if (token) {
+    //       this.cookieService.set('authToken', token);
+    //       localStorage.setItem('id', user?._id);
+    //       this.cookieManager.setCookiesState(token)
+
+    //     }
+
+    //     this.router.navigate(['/']);
+    //   });
   }
 }

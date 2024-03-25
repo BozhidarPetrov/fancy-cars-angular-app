@@ -13,6 +13,7 @@ import { CookieManagerService } from '../../cookie-manager.service';
 })
 export class LoginComponent {
   emailValidatorFn = emailValidator;
+  backendErrorMsg: string | undefined;
 
   constructor(
     private userService: UserService,
@@ -29,14 +30,33 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login(email, password).subscribe((user) => {
-      const token = this.userService.user?.accessToken;
-      if (token) {
-        this.cookieService.set('authToken', token);
-        localStorage.setItem('id', user?._id);
-        this.cookieManager.setCookiesState(token);
+    this.userService.login(email, password).subscribe( {
+      next:(user) => {
+        const token = this.userService.user?.accessToken;
+        if (token) {
+          this.cookieService.set('authToken', token);
+          localStorage.setItem('id', user?._id);
+          this.cookieManager.setCookiesState(token);
+        }
+        this.router.navigate(['/']);
+      },
+      error:(error) => {
+        this.backendErrorMsg = error.error;
+        console.log(error.error);
+        this.router.navigate(['/404']);
+        
       }
-      this.router.navigate(['/']);
-    });
+      })
+      
+
+    // this.userService.login(email, password).subscribe((user) => {
+    //   const token = this.userService.user?.accessToken;
+    //   if (token) {
+    //     this.cookieService.set('authToken', token);
+    //     localStorage.setItem('id', user?._id);
+    //     this.cookieManager.setCookiesState(token);
+    //   }
+    //   this.router.navigate(['/']);
+    // });
   }
 }

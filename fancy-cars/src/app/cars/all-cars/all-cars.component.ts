@@ -9,6 +9,7 @@ import {CarFromMongo} from '../../types/CarFromMongo'
 })
 export class AllCarsComponent implements OnInit{
 allCars: CarFromMongo[] = [];
+isLoading: boolean = true;
   constructor(private carService: CarService){}
 
 ngOnInit(): void {
@@ -16,6 +17,7 @@ ngOnInit(): void {
   this.carService.getAllCars().subscribe({
     next: (allCars) => {
       this.allCars = allCars;
+      this.isLoading = false;
     },
     error: (err) => {
       console.error(`Error: ${err.message}`);

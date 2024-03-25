@@ -17,6 +17,8 @@ export class MyCarsComponent implements OnInit {
   id: String | undefined;
   username: String | undefined;
 
+  isLoading: boolean = true;
+
   private subscription: Subscription | undefined;
 
   constructor(
@@ -32,6 +34,7 @@ export class MyCarsComponent implements OnInit {
           this.allCars = allCars;
 
           this.myCars = this.allCars.filter((car) => car.owner._id === this.id);
+          this.isLoading = false;
         },
         error: (err) => {
           console.error(`Error: ${err.message}`);

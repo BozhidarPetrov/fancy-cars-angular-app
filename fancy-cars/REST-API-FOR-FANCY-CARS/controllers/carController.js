@@ -39,11 +39,8 @@ router.post('/create',  async (req, res) => {
         res.status(201).json(result);
 
     } catch (err) {
-        console.log(req);
-
-        const errormsg = mapErrors(err);
       
-         res.status(400).json( errormsg );
+         res.status(400).json( err );
         
         
         
@@ -84,8 +81,14 @@ router.post('/:id/edit', async (req, res) => {
 
 router.get('/:id/details', async (req, res) => {
 const carId = req.params.id;
- const car = await api.getById(carId);
- res.json(car);
+try{
+    const car = await api.getById(carId);
+    res.json(car);
+}catch(err){
+    console.error(err.message);
+    res.status(400).json(err.message);
+}
+
 });
 
 // router.put('/:id', preload(), isOwner(), async (req, res) => {

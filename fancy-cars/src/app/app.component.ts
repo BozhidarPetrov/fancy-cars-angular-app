@@ -20,7 +20,6 @@ import { OnSameUrlNavigation } from '@angular/router';
 export class AppComponent implements OnInit {
   loggedUser: RegisteredUser | undefined;
   id: string | null;
-  //  private subscription: Subscription | undefined;
 
   constructor(
     private cookieManager: CookieManagerService,
@@ -31,28 +30,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = localStorage.getItem('id');
-    
-    if(this.id !== null){
+
+    if (this.id !== null) {
       this.userService.getUser(this.id).subscribe({
         next: (user) => {
-          // this.loggedUser = user;
           this.userService.user = user;
           this.userService.user$$.next(user);
           this.cookieManager.isLoggedInSubject.next(true);
-          // console.log(this.userService.user);
-          
         },
         error: (err) => {
           console.error(`Error: ${err.message}`);
         },
-      })
+      });
     }
-
-  
-
   }
-
-  // ngOnDestroy(): void {
-  //  this.subscription?.unsubscribe()
-  // }
 }

@@ -2,9 +2,16 @@
   <div class="hero-container" data-aos="fade-up">
     <h1>Hello, Fancy Cars Guest!</h1>
     <h2>You can register by using the below form:</h2>
+
+    <h2 *ngIf="backendErrorMsg" style="color: red">{{ backendErrorMsg }}</h2>
+
     <form #form="ngForm" (ngSubmit)="onRegisterSubmitHandler(form)">
       <div class="form-group">
-        <label for="exampleInputUsername1">Username</label>
+        <label
+          for="exampleInputUsername1"
+          style="color: black; font-weight: bolder"
+          >Username</label
+        >
         <input
           type="username"
           class="form-control"
@@ -17,20 +24,32 @@
           ngModel
           #inputUsername="ngModel"
         />
-    
+
         <div *ngIf="inputUsername.touched">
-          <p class="error" *ngIf="inputUsername.errors?.['required']">
+          <p
+            class="error"
+            *ngIf="inputUsername.errors?.['required']"
+            style="color: red; font-weight: bolder"
+          >
             Username is required!
           </p>
-          <p class="error" *ngIf="inputUsername.errors?.['minlength']">
+          <p
+            class="error"
+            *ngIf="inputUsername.errors?.['minlength']"
+            style="color: red; font-weight: bolder"
+          >
             Username's length must be at least
             {{inputUsername.errors?.['minlength']['requiredLength']}}!
           </p>
         </div>
       </div>
-    
+
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label
+          for="exampleInputEmail1"
+          style="color: black; font-weight: bolder"
+          >Email address</label
+        >
         <input
           type="email"
           class="form-control"
@@ -42,22 +61,31 @@
           ngModel
           #inputEmail="ngModel"
         />
-    
+
         <div *ngIf="inputEmail.touched">
-          <p class="error" *ngIf="inputEmail.errors?.['required']">
+          <p
+            class="error"
+            *ngIf="inputEmail.errors?.['required']"
+            style="color: red; font-weight: bolder"
+          >
             Email is required!
           </p>
           <p
             class="error"
             *ngIf="!emailValidatorFn(inputEmail.value) && !inputEmail.errors?.['required']"
+            style="color: red; font-weight: bolder"
           >
             Email is invalid!
           </p>
         </div>
       </div>
-    
+
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+        <label
+          for="exampleInputPassword1"
+          style="color: black; font-weight: bolder"
+          >Password</label
+        >
         <input
           type="password"
           class="form-control"
@@ -69,20 +97,32 @@
           ngModel
           #inputPassword="ngModel"
         />
-    
+
         <div *ngIf="inputPassword.touched">
-          <p class="error" *ngIf="inputPassword.errors?.['required']">
+          <p
+            class="error"
+            *ngIf="inputPassword.errors?.['required']"
+            style="color: red; font-weight: bolder"
+          >
             Password is required!
           </p>
-          <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+          <p
+            class="error"
+            *ngIf="inputPassword.errors?.['minlength']"
+            style="color: red; font-weight: bolder"
+          >
             Password's length must be at least
             {{inputPassword.errors?.['minlength']['requiredLength']}}!
           </p>
         </div>
       </div>
-    
+
       <div class="form-group">
-        <label for="exampleInputRePassword1">Re-Password</label>
+        <label
+          for="exampleInputRePassword1"
+          style="color: black; font-weight: bolder"
+          >Re-Password</label
+        >
         <input
           type="password"
           class="form-control"
@@ -93,26 +133,33 @@
           ngModel
           #inputRePassword="ngModel"
         />
-    
+
         <div *ngIf="inputRePassword.touched">
-          <p class="error" *ngIf="inputRePassword.errors?.['required']">
+          <p
+            class="error"
+            *ngIf="inputRePassword.errors?.['required']"
+            style="color: red; font-weight: bolder"
+          >
             Re-Password is required!
           </p>
           <p
             class="error"
             *ngIf="!passwordValidatorFn(inputPassword.value, inputRePassword.value) && !inputRePassword.errors?.['required']"
+            style="color: red; font-weight: bolder"
           >
             Passwords must match!
           </p>
         </div>
       </div>
-    
+
       <button type="submit" class="btn btn-primary">Submit</button>
 
-      <h2 routerLink="/user/login" style="cursor: pointer; color:rgba(255, 162, 0, 0.804);">Already registered? Click here to login!</h2>
-
+      <h2
+        routerLink="/user/login"
+        style="cursor: pointer; color: rgba(255, 162, 0, 0.804)"
+      >
+        Already registered? Click here to login!
+      </h2>
     </form>
   </div>
 </section>
-
-

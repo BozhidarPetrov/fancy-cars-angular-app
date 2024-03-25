@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const { isGuest, isAuth } = require('../middlewares/guards');
 const { register, login , findUserById} = require('../services/userService');
-const mapErrors = require('../utils/mapper');
 
 const attachCookie = (token, res) => {
     return res.cookie(process.env.COOKIE_NAME, token, {
@@ -26,8 +24,7 @@ router.post('/register', async (req, res) => {
         res.status(201).json(result);
     } catch (err) {
         console.error(err.message);
-        const error = mapErrors(err);
-        res.status(400).json({ message: error });
+        res.status(400).json(err.message);
     }
 });
 
@@ -48,7 +45,7 @@ router.post('/login', async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(400).json(err);
+        res.status(400).json(err.message);
     }
 });
 

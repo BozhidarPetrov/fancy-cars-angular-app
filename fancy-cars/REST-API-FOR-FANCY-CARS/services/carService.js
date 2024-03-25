@@ -16,8 +16,14 @@ async function create(car) {
 }
 
 function getById(id) {
-    return Car.findById(id).lean()
-    .populate('owner')
+    const car = Car.findById(id).lean()
+    .populate('owner');
+
+    if(!car){
+        throw new Error('Wrong Car Id!');
+    }
+
+    return car;
 
 }
 

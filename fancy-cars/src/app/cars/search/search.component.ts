@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit{
   filteredCars: CarFromMongo[] = [];
   hasResult : boolean =true;
 
+  isLoading: boolean = true;
+
   constructor(private carService: CarService, private router: Router){}
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class SearchComponent implements OnInit{
     this.carService.getAllCars().subscribe({
       next: (allCars) => {
         this.allCars = allCars;
+        this.isLoading = false;
       },
       error: (err) => {
         console.error(`Error: ${err.message}`);

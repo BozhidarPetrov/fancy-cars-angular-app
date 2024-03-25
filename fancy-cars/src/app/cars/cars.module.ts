@@ -7,6 +7,7 @@ import { AddNewComponent } from './add-new/add-new.component';
 import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { EditComponent } from './edit/edit.component';
+import { ShortenTextPipe } from '../pipes/shortenText.pipe';
 
 
 
@@ -17,6 +18,7 @@ import { EditComponent } from './edit/edit.component';
     DetailsComponent,
     SearchComponent,
     EditComponent,
+    ShortenTextPipe
   ],
   imports: [
     CommonModule, FormsModule, AppRoutingModule

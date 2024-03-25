@@ -1,7 +1,31 @@
 <section id="hero">
   <div class="hero-container" data-aos="fade-up">
+    
+    <div class="loading-container" *ngIf="isLoading">
+      <div class="loading-progress">
+          <div class="rotator">
+              <div class="rotator">
+                  <div class="rotator colored">
+                      <div class="rotator">
+                          <div class="rotator colored">
+                              <div class="rotator colored"></div>
+                              <div class="rotator"></div>
+                          </div>
+                          <div class="rotator colored"></div>
+                      </div>
+                      <div class="rotator"></div>
+                  </div>
+                  <div class="rotator"></div>
+              </div>
+              <div class="rotator"></div>
+          </div>
+          <div class="rotator"></div>
+      </div>
+  </div>
+
+
     <h1>Full list of all our users awesome cars</h1>
-    <div class="container mt-5">
+    <div class="container mt-5" *ngIf="!isLoading">
       <div class="row">
 
         <div class="col-md-3" *ngFor="let car of allCars">
@@ -23,6 +47,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <h5 class="dress-name">{{car.brand}} {{car.model}}</h5>
                 <h5 class="dress-name">Added by: {{car.owner.username}}</h5>
+                <h5 class="dress-name">{{car.description | shortenText}}</h5>
               </div>
 
               <div

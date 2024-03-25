@@ -29,7 +29,7 @@ export class AddNewComponent implements OnInit, OnDestroy{
     this.carService
       .createCar(description, brand, model, engine, +horsepower, fuel, color, +year, image, this.owner)
       .subscribe(() => {
-        this.router.navigate(['/cars/all']);
+        this.router.navigate(['/user/my-cars']);
       });
   }
 
