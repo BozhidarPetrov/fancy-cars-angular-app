@@ -15,6 +15,7 @@ import { UserService } from '../../user/user.service';
 export class EditComponent implements OnInit, OnDestroy {
   userIdtemp: string | undefined;
   owner: UserData = { _id: '' };
+  isLoading = true;
   private subscription: Subscription | undefined;
 
   carId: string = "";
@@ -33,6 +34,7 @@ export class EditComponent implements OnInit, OnDestroy {
     owner: { _id: '', username: '', email: '', hashedPassword: '', __v: 0 },
     __v: 0,
   };
+  hasError: boolean = false;
 
   constructor(
     private router: Router,
@@ -53,6 +55,12 @@ export class EditComponent implements OnInit, OnDestroy {
       year,
       image,
     } = form.value;
+
+    if(form.invalid){
+
+      
+      return;
+    }
 
     this.carService
       .updateCar(
@@ -110,10 +118,13 @@ export class EditComponent implements OnInit, OnDestroy {
           },
           __v: car.__v,
         };
+        this.isLoading = false;
         console.log(this.car);
       },
       error: (err) => {
         console.error(`Error: ${err.message}`);
+        this.isLoading = false;
+        this.hasError = true;
       },
     });
   }

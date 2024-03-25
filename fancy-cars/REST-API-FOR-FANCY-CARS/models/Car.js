@@ -7,7 +7,7 @@ const {
 const URL_PATTERN = /^https?:\/\/(.+)$/;
 
 const carSchema = new Schema({
-  description: {type: String, required: [true, 'Description is required!'], minlength: [10, 'Description must be at least 10 characters long!']},
+  description: {type: String, required: [true, 'Description is required!'], minlength: [10, 'Description must be at least 10 characters long!'], maxlength: [20, 'Description must be no more than 20 characters long!']},
   brand: { type: String, required: [true, 'Brand is required!'], minlength: [3, 'Brand must be at least 3 characters long!'] },
   model: { type: String, required: [true, 'Model is required!'], minlength: [2, 'Model must be at least 2 characters long!'] },
   engine: { type: String, required: [true, 'Engine type is required!'], minlength: [2, 'Engine type must be at least 2 characters long!'] },

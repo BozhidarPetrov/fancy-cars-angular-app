@@ -26,6 +26,11 @@ export class AddNewComponent implements OnInit, OnDestroy{
   onAddNewCarSubmitHandler(form: NgForm): void {
     const { description, brand, model, engine, horsepower, fuel, color, year, image } =
       form.value;
+      
+      if(form.invalid){
+        return;
+      }
+
     this.carService
       .createCar(description, brand, model, engine, +horsepower, fuel, color, +year, image, this.owner)
       .subscribe(() => {

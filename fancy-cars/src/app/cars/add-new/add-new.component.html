@@ -5,7 +5,7 @@
 <form #form="ngForm" (ngSubmit)="onAddNewCarSubmitHandler(form)">
 
   <div class="form-group">
-    <label for="exampleInputBrand">Description</label>
+    <label for="exampleInputBrand" style="color: black; font-weight: bolder;">Description</label>
     <input
       type="string"
       class="form-control"
@@ -15,15 +15,16 @@
       placeholder="Car description"
       required
       minlength="10"
+      maxlength="20"
       ngModel
       #inputDescription="ngModel"
     />
 
     <div *ngIf="inputDescription.touched">
-      <p class="error" *ngIf="inputDescription.errors?.['required']">
+      <p class="error" *ngIf="inputDescription.errors?.['required']" style="color: red; font-weight: bolder;">
         Description is required!
       </p>
-      <p class="error" *ngIf="inputDescription.errors?.['minlength']">
+      <p class="error" *ngIf="inputDescription.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Description length must be at least
         {{inputDescription.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -31,7 +32,7 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputBrand">Brand</label>
+    <label for="exampleInputBrand" style="color: black; font-weight: bolder;">Brand</label>
     <input
       type="string"
       class="form-control"
@@ -46,10 +47,10 @@
     />
 
     <div *ngIf="inputBrand.touched">
-      <p class="error" *ngIf="inputBrand.errors?.['required']">
+      <p class="error" *ngIf="inputBrand.errors?.['required']" style="color: red; font-weight: bolder;">
         Brand is required!
-      </p>
-      <p class="error" *ngIf="inputBrand.errors?.['minlength']">
+      </p> 
+      <p class="error" *ngIf="inputBrand.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Brand length must be at least
         {{inputBrand.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -57,7 +58,7 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputModel">Model</label>
+    <label for="exampleInputModel" style="color: black; font-weight: bolder;">Model</label>
     <input
       type="string"
       class="form-control"
@@ -72,10 +73,10 @@
     />
 
     <div *ngIf="inputModel.touched">
-      <p class="error" *ngIf="inputModel.errors?.['required']">
+      <p class="error" *ngIf="inputModel.errors?.['required']" style="color: red; font-weight: bolder;">
         Model is required!
       </p>
-      <p class="error" *ngIf="inputModel.errors?.['minlength']">
+      <p class="error" *ngIf="inputModel.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Model length must be at least
         {{inputModel.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -83,7 +84,7 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputEngine">Engine Type</label>
+    <label for="exampleInputEngine" style="color: black; font-weight: bolder;">Engine Type</label>
     <input
       type="string"
       class="form-control"
@@ -98,10 +99,10 @@
     />
 
     <div *ngIf="inputEngine.touched">
-      <p class="error" *ngIf="inputEngine.errors?.['required']">
+      <p class="error" *ngIf="inputEngine.errors?.['required']" style="color: red; font-weight: bolder;">
         Engine is required!
       </p>
-      <p class="error" *ngIf="inputEngine.errors?.['minlength']">
+      <p class="error" *ngIf="inputEngine.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Engine length must be at least
         {{inputEngine.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -109,7 +110,7 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputPower">Horsepower</label>
+    <label for="exampleInputPower" style="color: black; font-weight: bolder;">Horsepower</label>
     <input
       type="number"
       class="form-control"
@@ -124,17 +125,17 @@
     />
 
     <div *ngIf="inputHorsePower.touched">
-      <p class="error" *ngIf="inputHorsePower.errors?.['required']">
+      <p class="error" *ngIf="inputHorsePower.errors?.['required']" style="color: red; font-weight: bolder;">
         Horsepower is required!
       </p>
-      <p class="error" *ngIf="inputHorsePower.errors?.['min']">
+      <p class="error" *ngIf="inputHorsePower.errors?.['min']" style="color: red; font-weight: bolder;">
         Horsepowe can't be 0!
       </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="exampleInputFuel">Fuel</label>
+    <label for="exampleInputFuel" style="color: black; font-weight: bolder;">Fuel</label>
     <input
       type="string"
       class="form-control"
@@ -149,10 +150,10 @@
     />
 
     <div *ngIf="inputFuel.touched">
-      <p class="error" *ngIf="inputFuel.errors?.['required']">
+      <p class="error" *ngIf="inputFuel.errors?.['required']" style="color: red; font-weight: bolder;">
         Fuel type is required!
       </p>
-      <p class="error" *ngIf="inputFuel.errors?.['minlength']">
+      <p class="error" *ngIf="inputFuel.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Fuel length must be at least
         {{inputFuel.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -160,7 +161,7 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputColor">Color</label>
+    <label for="exampleInputColor" style="color: black; font-weight: bolder;">Color</label>
     <input
       type="string"
       class="form-control"
@@ -175,10 +176,10 @@
     />
 
     <div *ngIf="inputColor.touched">
-      <p class="error" *ngIf="inputColor.errors?.['required']">
+      <p class="error" *ngIf="inputColor.errors?.['required']" style="color: red; font-weight: bolder;">
         Color is required!
       </p>
-      <p class="error" *ngIf="inputColor.errors?.['minlength']">
+      <p class="error" *ngIf="inputColor.errors?.['minlength']" style="color: red; font-weight: bolder;">
         Color length must be at least
         {{inputColor.errors?.['minlength']['requiredLength']}}!
       </p>
@@ -186,9 +187,9 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleInputYear">Year</label>
+    <label for="exampleInputYear" style="color: black; font-weight: bolder;">Year</label>
     <input
-      type="string"
+      type="number"
       class="form-control"
       id="exampleInputYearHelp"
       name="year"
@@ -200,17 +201,17 @@
     />
 
     <div *ngIf="inputYear.touched">
-      <p class="error" *ngIf="inputYear.errors?.['required']">
+      <p class="error" *ngIf="inputYear.errors?.['required']" style="color: red; font-weight: bolder;">
         Year is required!
       </p>
-      <p class="error" *ngIf="inputYear.errors?.['min']">
+      <p class="error" *ngIf="inputYear.errors?.['min']" style="color: red; font-weight: bolder;">
         Car can't be older than 1900!
       </p>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="exampleInputImageUrl">Image URL</label>
+    <label for="exampleInputImageUrl" style="color: black; font-weight: bolder;">Image URL</label>
     <input
       type="string"
       class="form-control"
@@ -223,10 +224,10 @@
     />
 
     <div *ngIf="inputimageUrl.touched">
-      <p class="error" *ngIf="inputimageUrl.errors?.['required']">
+      <p class="error" *ngIf="inputimageUrl.errors?.['required']" style="color: red; font-weight: bolder;">
         Image URL is required!
       </p>
-      <p class="error" *ngIf="!carImageValidator(inputimageUrl.value)">Image URL must start with http:// or https://!</p>
+      <p class="error" *ngIf="!carImageValidator(inputimageUrl.value)" style="color: red; font-weight: bolder;">Image URL must start with http:// or https://!</p>
     </div>
   </div>
 

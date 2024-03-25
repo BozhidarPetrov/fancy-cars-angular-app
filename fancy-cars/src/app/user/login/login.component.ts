@@ -42,8 +42,7 @@ export class LoginComponent {
       },
       error:(error) => {
         this.backendErrorMsg = error.error;
-        console.log(error.error);
-        this.router.navigate(['/404']);
+
         
       }
       })

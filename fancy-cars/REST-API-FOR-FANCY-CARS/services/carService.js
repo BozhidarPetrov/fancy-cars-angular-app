@@ -30,6 +30,10 @@ function getById(id) {
 async function update(id, car) {
     const existing = await Car.findById(id);
 
+    if(!existing){
+        throw new Error('Wrong Car Id!');
+    }
+
     existing.description = car.description;
     existing.brand = car.brand;
     existing.model = car.model;
