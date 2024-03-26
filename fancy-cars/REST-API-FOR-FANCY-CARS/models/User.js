@@ -19,18 +19,11 @@ const userSchema = new Schema({
       validator(value) {
         return EMAIL_PATTERN.test(value);
       },
-      // message: 'Email must be valid and contain only english letters!'
     },
   },
   hashedPassword: { type: String, required: [true, "Password is required!"] },
 });
 
-// userSchema.index({ email: 1}, {
-//     collation: {
-//         locale: 'en',
-//         strength: 1
-//     }
-// });
 userSchema.index(
   { email: 1 },
   {

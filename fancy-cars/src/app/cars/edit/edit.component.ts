@@ -12,9 +12,6 @@ import { UserService } from '../../user/user.service';
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
-
-
-
 export class EditComponent implements OnInit, OnDestroy {
   userIdtemp: string | undefined;
   owner: UserData = { _id: '' };
@@ -121,11 +118,10 @@ export class EditComponent implements OnInit, OnDestroy {
           __v: car.__v,
         };
         this.isLoading = false;
-        
-        if(car.owner._id === this.userIdtemp){
+
+        if (car.owner._id === this.userIdtemp) {
           this.isOwner = true;
         }
-
       },
       error: (err) => {
         console.error(`Error: ${err.message}`);
