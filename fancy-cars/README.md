@@ -1,27 +1,15 @@
-# FancyCars
+This is my Angular project for the Soft Uni project defense and first Angular app in general.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+The application is located in the "src" folder and the REST API is in the "REST-API-FOR-FANCY-CARS" folder.
+The back-end uses Express JS, Mongoose, Bcrypt for hashing the passwords and JWT for generating tokens. It is started with "node index.js" in the terminal.
+The front-end uses Angular and the design is made with Bootstrap. It is started with "ng s" in the terminal.
 
-## Development server
+The aplication is a basic social network for car enthusiasts, where they can upload their own and like other people's cars.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The owner of the post can edit and delete it, while a user that's logged in, but is not the owner can only like it (no more than once).
+Non logged users can only see the details of a current car, but can't perform any actions.
 
-## Code scaffolding
+Guests can access Home, All Cars, Car Details (without extra functionality), Search, Login and Register.
+Users have access to Home, My Cars, Add Car, Car Details(with Like, Edit and Delete functionality), All Cars, Search and Logout.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The input is validated both on the front and back-end and error handling has been applied, so even if an error occurs - the application will not crash.
