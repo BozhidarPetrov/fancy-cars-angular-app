@@ -9,5 +9,4 @@ export interface Car {
   year: number;
   image: string;
   owner: string | undefined;
-
 }

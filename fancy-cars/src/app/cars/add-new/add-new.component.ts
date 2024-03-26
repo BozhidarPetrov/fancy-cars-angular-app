@@ -11,10 +11,10 @@ import { UserData } from '../../types/UserData';
   templateUrl: './add-new.component.html',
   styleUrl: './add-new.component.css',
 })
-export class AddNewComponent implements OnInit, OnDestroy{
+export class AddNewComponent implements OnInit, OnDestroy {
   userIdtemp: string | undefined;
   userEmailTemp: string | undefined;
-  owner: UserData ={_id:''};
+  owner: UserData = { _id: '' };
   private subscription: Subscription | undefined;
 
   constructor(
@@ -24,15 +24,35 @@ export class AddNewComponent implements OnInit, OnDestroy{
   ) {}
 
   onAddNewCarSubmitHandler(form: NgForm): void {
-    const { description, brand, model, engine, horsepower, fuel, color, year, image } =
-      form.value;
-      
-      if(form.invalid){
-        return;
-      }
+    const {
+      description,
+      brand,
+      model,
+      engine,
+      horsepower,
+      fuel,
+      color,
+      year,
+      image,
+    } = form.value;
+
+    if (form.invalid) {
+      return;
+    }
 
     this.carService
-      .createCar(description, brand, model, engine, +horsepower, fuel, color, +year, image, this.owner)
+      .createCar(
+        description,
+        brand,
+        model,
+        engine,
+        +horsepower,
+        fuel,
+        color,
+        +year,
+        image,
+        this.owner
+      )
       .subscribe(() => {
         this.router.navigate(['/user/my-cars']);
       });
@@ -45,13 +65,16 @@ export class AddNewComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.subscription = this.userService.user$.subscribe(user=> {this.userIdtemp = user?._id})
-    this.subscription = this.userService.user$.subscribe(user=> {this.userEmailTemp = user?.email})
+    this.subscription = this.userService.user$.subscribe((user) => {
+      this.userIdtemp = user?._id;
+    });
+    this.subscription = this.userService.user$.subscribe((user) => {
+      this.userEmailTemp = user?.email;
+    });
     this.owner._id = this.userIdtemp;
   }
 
   ngOnDestroy(): void {
-
-    this.subscription?.unsubscribe()
+    this.subscription?.unsubscribe();
   }
 }

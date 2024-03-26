@@ -1,16 +1,10 @@
 import {
   Component,
-  OnChanges,
-  OnDestroy,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { CookieManagerService } from './cookie-manager.service';
-import { Subscription } from 'rxjs';
 import { UserService } from './user/user.service';
 import { RegisteredUser } from './types/registeredUser';
-import { OnSameUrlNavigation } from '@angular/router';
 
 @Component({
   selector: 'app-root',

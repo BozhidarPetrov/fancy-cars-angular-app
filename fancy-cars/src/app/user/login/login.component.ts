@@ -30,8 +30,8 @@ export class LoginComponent {
       return;
     }
 
-    this.userService.login(email, password).subscribe( {
-      next:(user) => {
+    this.userService.login(email, password).subscribe({
+      next: (user) => {
         const token = this.userService.user?.accessToken;
         if (token) {
           this.cookieService.set('authToken', token);
@@ -40,22 +40,9 @@ export class LoginComponent {
         }
         this.router.navigate(['/']);
       },
-      error:(error) => {
+      error: (error) => {
         this.backendErrorMsg = error.error;
-
-        
-      }
-      })
-      
-
-    // this.userService.login(email, password).subscribe((user) => {
-    //   const token = this.userService.user?.accessToken;
-    //   if (token) {
-    //     this.cookieService.set('authToken', token);
-    //     localStorage.setItem('id', user?._id);
-    //     this.cookieManager.setCookiesState(token);
-    //   }
-    //   this.router.navigate(['/']);
-    // });
+      },
+    });
   }
 }

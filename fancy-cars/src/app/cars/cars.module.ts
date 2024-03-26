@@ -9,8 +9,6 @@ import { SearchComponent } from './search/search.component';
 import { EditComponent } from './edit/edit.component';
 import { ShortenTextPipe } from '../pipes/shortenText.pipe';
 
-
-
 @NgModule({
   declarations: [
     AllCarsComponent,
@@ -18,10 +16,8 @@ import { ShortenTextPipe } from '../pipes/shortenText.pipe';
     DetailsComponent,
     SearchComponent,
     EditComponent,
-    ShortenTextPipe
+    ShortenTextPipe,
   ],
-  imports: [
-    CommonModule, FormsModule, AppRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, AppRoutingModule],
 })
-export class CarsModule { }
+export class CarsModule {}

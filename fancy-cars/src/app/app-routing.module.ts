@@ -19,18 +19,30 @@ const routes: Routes = [
     path: 'user',
     children: [
       { path: 'login', component: LoginComponent, canActivate: [UserGuard] },
-      { path: 'register', component: RegisterComponent, canActivate: [UserGuard] },
-      { path: 'my-cars', component: MyCarsComponent, canActivate: [GuestGuard] },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'my-cars',
+        component: MyCarsComponent,
+        canActivate: [GuestGuard],
+      },
     ],
   },
   {
     path: 'cars',
     children: [
       { path: 'all', component: AllCarsComponent },
-      { path: 'add', component: AddNewComponent , canActivate: [GuestGuard]},
+      { path: 'add', component: AddNewComponent, canActivate: [GuestGuard] },
       { path: 'search', component: SearchComponent },
       { path: ':carId/details', component: DetailsComponent },
-      { path: ':carId/edit', component: EditComponent, canActivate: [GuestGuard] },
+      {
+        path: ':carId/edit',
+        component: EditComponent,
+        canActivate: [GuestGuard],
+      },
     ],
   },
   { path: '404', component: NotFoundComponent },

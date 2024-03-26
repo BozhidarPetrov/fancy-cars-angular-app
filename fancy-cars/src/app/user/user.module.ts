@@ -6,18 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MyCarsComponent } from './my-cars/my-cars.component';
 
-
-
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    MyCarsComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppRoutingModule
-  ]
+  declarations: [LoginComponent, RegisterComponent, MyCarsComponent],
+  imports: [CommonModule, FormsModule, AppRoutingModule],
 })
-export class UserModule { }
+export class UserModule {}

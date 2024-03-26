@@ -1,34 +1,21 @@
-import { Injectable, OnInit } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { UserService } from '../user/user.service';
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class GuestGuard implements CanActivate {
-   
-
-  constructor(private router: Router, private userService: UserService) {
- 
-  }
+  constructor(private router: Router, private userService: UserService) {}
 
   canActivate(): boolean {
-
-  const  id = localStorage.getItem('id');
+    const id = localStorage.getItem('id');
 
     if (id !== null) {
-      return true; // Allow access if the user is authenticated
+      return true;
     } else {
-        
-      this.router.navigate(['/user/login']); // Redirect to login if not authenticated
-      return false; // Prevent access to the route
+      this.router.navigate(['/user/login']);
+      return false;
     }
   }
 }

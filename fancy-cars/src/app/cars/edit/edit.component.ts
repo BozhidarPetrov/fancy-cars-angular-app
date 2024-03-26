@@ -18,7 +18,7 @@ export class EditComponent implements OnInit, OnDestroy {
   isLoading = true;
   private subscription: Subscription | undefined;
 
-  carId: string = "";
+  carId: string = '';
   car: CarFromMongo = {
     _id: '',
     description: '',
@@ -56,9 +56,7 @@ export class EditComponent implements OnInit, OnDestroy {
       image,
     } = form.value;
 
-    if(form.invalid){
-
-      
+    if (form.invalid) {
       return;
     }
 
@@ -130,7 +128,6 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
-    this.subscription?.unsubscribe()
+    this.subscription?.unsubscribe();
   }
 }

@@ -7,20 +7,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrl: './search.component.css',
 })
-export class SearchComponent implements OnInit{
-
+export class SearchComponent implements OnInit {
   allCars: CarFromMongo[] = [];
   filteredCars: CarFromMongo[] = [];
-  hasResult : boolean =true;
+  hasResult: boolean = true;
 
   isLoading: boolean = true;
 
-  constructor(private carService: CarService, private router: Router){}
+  constructor(private carService: CarService, private router: Router) {}
 
   ngOnInit(): void {
-
     this.carService.getAllCars().subscribe({
       next: (allCars) => {
         this.allCars = allCars;
@@ -30,36 +28,35 @@ export class SearchComponent implements OnInit{
         console.error(`Error: ${err.message}`);
       },
     });
-
-    
-    
   }
 
-  searchBrand(form : NgForm):void{
+  searchBrand(form: NgForm): void {
     const searchBrand = form.value.brand;
-    
-    this.filteredCars = this.allCars.filter((car) => car.brand.toLocaleLowerCase().includes(searchBrand.toLocaleLowerCase()));
-    
-    if(this.filteredCars.length === 0){
+
+    this.filteredCars = this.allCars.filter((car) =>
+      car.brand.toLocaleLowerCase().includes(searchBrand.toLocaleLowerCase())
+    );
+
+    if (this.filteredCars.length === 0) {
       this.hasResult = false;
-    }else{
+    } else {
       this.hasResult = true;
     }
     form.reset();
   }
 
-  searchModel(form: NgForm):void{
+  searchModel(form: NgForm): void {
     const searchModel = form.value.model;
 
-    this.filteredCars = this.allCars.filter((car) => car.model.toLocaleLowerCase().includes(searchModel.toLocaleLowerCase()))
+    this.filteredCars = this.allCars.filter((car) =>
+      car.model.toLocaleLowerCase().includes(searchModel.toLocaleLowerCase())
+    );
 
-    if(this.filteredCars.length === 0){
+    if (this.filteredCars.length === 0) {
       this.hasResult = false;
-    }else{
+    } else {
       this.hasResult = true;
     }
     form.reset();
   }
-
-
 }

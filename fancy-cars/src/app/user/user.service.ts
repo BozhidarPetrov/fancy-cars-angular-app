@@ -6,11 +6,10 @@ import { RegisteredUser } from '../types/registeredUser';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class UserService implements OnDestroy{
-
-   user$$ = new BehaviorSubject<RegisteredUser | undefined>(undefined);
+export class UserService implements OnDestroy {
+  user$$ = new BehaviorSubject<RegisteredUser | undefined>(undefined);
 
   user$ = this.user$$.asObservable();
 
@@ -22,15 +21,14 @@ export class UserService implements OnDestroy{
 
   subscription: Subscription;
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { 
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
-  logout() {    
-
-    this.cookieService.delete('authToken')
+  logout() {
+    this.cookieService.delete('authToken');
     localStorage.removeItem('id');
 
     return this.http
@@ -40,18 +38,18 @@ export class UserService implements OnDestroy{
 
   login(email: string, password: string) {
     return this.http
-      .post<RegisteredUser>('http://localhost:3030/users/login', { email, password })
+      .post<RegisteredUser>('http://localhost:3030/users/login', {
+        email,
+        password,
+      })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-
-
-  
   register(
     username: string,
     email: string,
     password: string,
-    rePassword: string,
+    rePassword: string
   ) {
     return this.http
       .post<RegisteredUser>('http://localhost:3030/users/register', {
@@ -59,19 +57,20 @@ export class UserService implements OnDestroy{
         email,
         password,
         rePassword,
-      }).pipe(tap((user) => this.user$$.next(user)));
-
-      
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  getUser(id:string | null){
-    return this.http.post<RegisteredUser>(`http://localhost:3030/users/profile`, {
-      id,
-    })
+  getUser(id: string | null) {
+    return this.http.post<RegisteredUser>(
+      `http://localhost:3030/users/profile`,
+      {
+        id,
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

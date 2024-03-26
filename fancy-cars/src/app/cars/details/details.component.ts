@@ -58,8 +58,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
           },
           error: (err) => {
             console.error(`Error: ${err.message}`);
-            // throw new Error(err.message);
-            // this.router.navigate(['/404']);
             this.hasError = true;
           },
         });

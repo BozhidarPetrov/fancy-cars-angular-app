@@ -45,10 +45,5 @@ export class MyCarsComponent implements OnInit {
     this.subscription = this.userService.user$.subscribe((user) => {
       this.username = user?.username;
     });
-
-    // this.myCars = this.allCars.filter((car) => car.owner._id === this.id)
-
-    // console.log(this.allCars);
-    // console.log(this.myCars);
   }
 }

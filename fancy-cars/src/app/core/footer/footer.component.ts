@@ -4,14 +4,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrl: './footer.component.css',
 })
 export class FooterComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router){}
-
-  registerRedirect():void{
-    this.router.navigate(['/user/register'])
+  registerRedirect(): void {
+    this.router.navigate(['/user/register']);
   }
-
 }

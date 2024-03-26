@@ -52,19 +52,5 @@ export class RegisterComponent {
         console.log(error.error);
       },
     });
-
-    // this.userService
-    //   .register(username, email, password, rePassword)
-    //   .subscribe((user) => {
-    //     const token = this.userService.user?.accessToken;
-    //     if (token) {
-    //       this.cookieService.set('authToken', token);
-    //       localStorage.setItem('id', user?._id);
-    //       this.cookieManager.setCookiesState(token)
-
-    //     }
-
-    //     this.router.navigate(['/']);
-    //   });
   }
 }
