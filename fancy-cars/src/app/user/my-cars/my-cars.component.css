@@ -153,3 +153,9 @@
 .loading-container .colored {
   background-color: #2dc3e8!important;
 }
+
+/* center */
+
+.center {
+align-self: auto;
+}

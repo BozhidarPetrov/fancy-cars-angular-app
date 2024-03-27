@@ -562,3 +562,13 @@ b, strong {
 .loading-container .colored {
   background-color: #2dc3e8!important;
 }
+
+/* center */
+
+.center {
+  position: absolute;
+  top: 1%;
+  left: 6%;
+  right: 5%;
+  bottom: 5%;
+}
