@@ -1,29 +1,10 @@
 <app-hero>
 
     <div class="center">
-    
-    <div class="loading-container" *ngIf="isLoading">
-      <div class="loading-progress">
-          <div class="rotator">
-              <div class="rotator">
-                  <div class="rotator colored">
-                      <div class="rotator">
-                          <div class="rotator colored">
-                              <div class="rotator colored"></div>
-                              <div class="rotator"></div>
-                          </div>
-                          <div class="rotator colored"></div>
-                      </div>
-                      <div class="rotator"></div>
-                  </div>
-                  <div class="rotator"></div>
-              </div>
-              <div class="rotator"></div>
-          </div>
-          <div class="rotator"></div>
-      </div>
-  </div>
 
+      <div *ngIf="isLoading">
+      <app-loader/>
+      </div>
 
     <h1>Full list of all our users awesome cars</h1>
 
