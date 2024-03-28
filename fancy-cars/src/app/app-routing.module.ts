@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { MyCarsComponent } from './user/my-cars/my-cars.component';
@@ -12,9 +11,10 @@ import { DetailsComponent } from './cars/details/details.component';
 import { EditComponent } from './cars/edit/edit.component';
 import { GuestGuard } from './guards/guestsGuard';
 import { UserGuard } from './guards/userGuard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent  },
   {
     path: 'user',
     children: [

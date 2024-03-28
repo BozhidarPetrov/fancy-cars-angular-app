@@ -8,19 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
 import { CarsModule } from './cars/cars.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { HeroComponent } from './templates/hero/hero.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, HeroComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HomeModule,
     CarsModule,
     UserModule,
     HttpClientModule,
