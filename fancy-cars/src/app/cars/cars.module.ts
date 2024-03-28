@@ -8,6 +8,7 @@ import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { EditComponent } from './edit/edit.component';
 import { ShortenTextPipe } from '../pipes/shortenText.pipe';
+import { TemplatesModule } from '../templates/templates.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,6 @@ import { ShortenTextPipe } from '../pipes/shortenText.pipe';
     EditComponent,
     ShortenTextPipe,
   ],
-  imports: [CommonModule, FormsModule, AppRoutingModule],
+  imports: [CommonModule, FormsModule, AppRoutingModule, TemplatesModule],
 })
 export class CarsModule {}

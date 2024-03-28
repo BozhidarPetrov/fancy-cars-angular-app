@@ -12,11 +12,11 @@ import { CarsModule } from './cars/cars.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { HeroComponent } from './templates/hero/hero.component';
 import { HomeComponent } from './home/home.component';
+import { TemplatesModule } from './templates/templates.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent, HeroComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     CarsModule,
     UserModule,
     HttpClientModule,
+    TemplatesModule
   ],
   providers: [provideClientHydration(), CookieService],
   bootstrap: [AppComponent],

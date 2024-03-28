@@ -1,4 +1,4 @@
-<section id="hero">
+<app-hero>
 
   <div class="loading-container" *ngIf="isLoading">
     <div class="loading-progress">
@@ -22,12 +22,12 @@
     </div>
 </div>
 
-  <div class="hero-container" data-aos="fade-up" *ngIf="!isLoading">
+ 
     <h1>You are looking for a particular car?</h1>
     <h2>Use our awesome search function to find it!</h2>
 
     <h2>Enter car brand here:</h2>
-    <div>
+    <div *ngIf="!isLoading">
       <form
         #brandForm="ngForm"
         class="d-flex"
@@ -97,5 +97,4 @@
 
     </div>
 
-  </div>
-</section>
+  </app-hero>
