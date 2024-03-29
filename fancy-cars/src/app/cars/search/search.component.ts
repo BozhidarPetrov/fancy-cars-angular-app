@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   hasResult: boolean = true;
 
   isLoading: boolean = true;
+  resultCriteria: string | undefined;
 
   constructor(private carService: CarService, private router: Router) {}
 
@@ -33,30 +34,36 @@ export class SearchComponent implements OnInit {
   searchBrand(form: NgForm): void {
     const searchBrand = form.value.brand;
 
-    this.filteredCars = this.allCars.filter((car) =>
-      car.brand.toLocaleLowerCase().includes(searchBrand.toLocaleLowerCase())
-    );
+    if (searchBrand) {
+      this.filteredCars = this.allCars.filter((car) =>
+        car.brand.toLocaleLowerCase().includes(searchBrand.toLocaleLowerCase())
+      );
 
-    if (this.filteredCars.length === 0) {
-      this.hasResult = false;
-    } else {
-      this.hasResult = true;
+      if (this.filteredCars.length === 0) {
+        this.hasResult = false;
+      } else {
+        this.resultCriteria = form.value.brand;
+        this.hasResult = true;
+      }
+      form.reset();
     }
-    form.reset();
   }
 
   searchModel(form: NgForm): void {
     const searchModel = form.value.model;
 
-    this.filteredCars = this.allCars.filter((car) =>
-      car.model.toLocaleLowerCase().includes(searchModel.toLocaleLowerCase())
-    );
+    if (searchModel) {
+      this.filteredCars = this.allCars.filter((car) =>
+        car.model.toLocaleLowerCase().includes(searchModel.toLocaleLowerCase())
+      );
 
-    if (this.filteredCars.length === 0) {
-      this.hasResult = false;
-    } else {
-      this.hasResult = true;
+      if (this.filteredCars.length === 0) {
+        this.hasResult = false;
+      } else {
+        this.resultCriteria = form.value.model;
+        this.hasResult = true;
+      }
+      form.reset();
     }
-    form.reset();
   }
 }
