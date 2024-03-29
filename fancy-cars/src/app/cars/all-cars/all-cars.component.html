@@ -1,24 +1,18 @@
 <app-hero>
-
-    <div class="center">
-
-      <div *ngIf="isLoading">
-      <app-loader/>
-      </div>
+  <div class="center">
+    <div *ngIf="isLoading">
+      <app-loader />
+    </div>
 
     <h1>Full list of all our users awesome cars</h1>
 
-    <div *ngIf="!isLoading" class="row" style="gap: 1rem;">
-      <div class="card" style="width: 18rem;" *ngFor="let car of allCars">
-        <img src={{car.image}} class="card-img-top"  style="height: 60%;" alt="...">
-        <div class="card-body" style="height: 40%;">
-          <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
-          <p class="card-text">{{car.description | shortenText}}</p>
-          <p class="card-text">Added by: {{car.owner.username}}</p>
-          <a routerLink="/cars/{{car._id}}/details" class="btn btn-primary">Details</a>
-        </div>
-      </div>
+    <div *ngIf="!isLoading" class="row" style="gap: 1rem">
+      <app-car-card
+        [car]="car"
+        *ngFor="let car of allCars"
+        class="card"
+        style="width: 18rem"
+      />
     </div>
-
   </div>
 </app-hero>

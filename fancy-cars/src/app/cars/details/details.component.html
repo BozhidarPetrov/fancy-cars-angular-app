@@ -1,6 +1,6 @@
 <app-hero>
   <div *ngIf="hasError">
-    <h1>Wrong car ID!</h1>
+    <h1 style="color: red">Wrong car ID!</h1>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
@@ -20,8 +20,8 @@
     />
 
     <div *ngIf="isLoading">
-      <app-loader/>
-      </div>
+      <app-loader />
+    </div>
 
     <div class="container" *ngIf="!isLoading">
       <div class="row">
@@ -30,7 +30,6 @@
             <h5>About:</h5>
             <p class="mb-0">{{ car?.description }}</p>
           </div>
-          <!-- / project-info-box -->
 
           <div class="project-info-box">
             <p><b>Brand:</b> {{ car?.brand }}</p>
@@ -41,35 +40,44 @@
             <p><b>Color</b> {{ car?.color }}</p>
             <p><b>Year</b> {{ car?.year }}</p>
             <p><b>Owner</b> {{ car?.owner?.username }}</p>
-            <!-- <p><b>Likes</b> {{ car?.likes?.length }}</p> -->
             <p><b>Likes</b> {{ likesCounter }}</p>
           </div>
-          <!-- / project-info-box -->
 
           <div class="project-info-box mt-0 mb-0" *ngIf="hasUser">
             <p class="mb-0" *ngIf="!isOwner">
               <span class="fw-bold mr-10 va-middle hide-mobile"></span>
 
-              <button (click)="likeCar()" *ngIf="!hasLiked" class="btn btn-primary">LIKE</button>
-              <span *ngIf="hasLiked" style="font-weight: bolder; color: brown;">You have already liked this car!</span>
+              <button
+                (click)="likeCar()"
+                *ngIf="!hasLiked"
+                class="btn btn-primary"
+              >
+                LIKE
+              </button>
+              <span *ngIf="hasLiked" style="font-weight: bolder; color: brown"
+                >You have already liked this car!</span
+              >
             </p>
 
             <p class="mb-0" *ngIf="isOwner">
               <span class="fw-bold mr-10 va-middle hide-mobile"></span>
 
-              <button routerLink="/cars/{{ car?._id }}/edit" class="btn btn-primary">EDIT</button>
-              <button (click)="deleteCar()" class="btn btn-primary">DELETE</button>
+              <button
+                routerLink="/cars/{{ car?._id }}/edit"
+                class="btn btn-primary"
+              >
+                EDIT
+              </button>
+              <button (click)="deleteCar()" class="btn btn-primary">
+                DELETE
+              </button>
             </p>
           </div>
-          <!-- / project-info-box -->
         </div>
-        <!-- / column -->
 
         <div class="col-md-7">
           <img src="{{ car?.image }}" alt="project-image" class="rounded" />
-          <!-- / project-info-box -->
         </div>
-        <!-- / column -->
       </div>
     </div>
   </div>

@@ -1,26 +1,23 @@
 <app-hero>
-    <h1>{{username}}'s Cars</h1>
+  <h1>{{ username }}'s Cars</h1>
 
-    <div *ngIf="isLoading">
-      <app-loader/>
-      </div>
+  <div *ngIf="isLoading">
+    <app-loader />
+  </div>
 
-    <div class="center" *ngIf="myCars.length !== 0">
-
-      <div *ngIf="!isLoading" class="row" style="gap: 1rem;">
-        <div class="card" style="width: 18rem;" *ngFor="let car of myCars">
-          <img src={{car.image}} class="card-img-top"  style="height: 60%;" alt="...">
-          <div class="card-body" style="height: 40%;">
-            <h5 class="card-title">My awesome {{car.brand}} {{car.model}}</h5>
-            <a routerLink="/cars/{{car._id}}/details" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-
+  <div class="center" *ngIf="myCars.length !== 0">
+    <div *ngIf="!isLoading" class="row" style="gap: 1rem">
+      <app-car-card
+        [car]="car"
+        [onMyCars]="onMyCars"
+        *ngFor="let car of myCars"
+        class="card"
+        style="width: 18rem"
+      />
     </div>
+  </div>
 
-    <div *ngIf="myCars.length === 0">
-      <h1>You haven't added any cars yet...</h1>
-    </div>
-
-  </app-hero>
+  <div *ngIf="myCars.length === 0">
+    <h1>You haven't added any cars yet...</h1>
+  </div>
+</app-hero>

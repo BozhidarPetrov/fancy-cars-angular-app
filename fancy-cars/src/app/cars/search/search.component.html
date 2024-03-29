@@ -1,82 +1,73 @@
 <app-hero>
-
   <div *ngIf="isLoading">
-    <app-loader/>
-    </div>
+    <app-loader />
+  </div>
 
- 
-    <h1>You are looking for a particular car?</h1>
-    <h2>Use our awesome search function to find it!</h2>
+  <h1>You are looking for a particular car?</h1>
+  <h2>Use our awesome search function to find it!</h2>
 
-    <h2>Enter car brand here:</h2>
-    <div *ngIf="!isLoading">
-      <form
-        #brandForm="ngForm"
-        class="d-flex"
-        role="search"
-        (ngSubmit)="searchBrand(brandForm)"
+  <h2>Enter car brand here:</h2>
+  <div *ngIf="!isLoading">
+    <form
+      #brandForm="ngForm"
+      class="d-flex"
+      role="search"
+      (ngSubmit)="searchBrand(brandForm)"
+    >
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Brand..."
+        aria-label="Search"
+        name="brand"
+        ngModel
+        #inputBrandSearch="ngModel"
+      />
+      <button
+        class="btn btn-outline-success"
+        style="color: white; background-color: rgb(4, 4, 138)"
+        type="submit"
       >
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Brand..."
-          aria-label="Search"
-          name="brand"
-          ngModel
-          #inputBrandSearch="ngModel"
-        />
-        <button
-          class="btn btn-outline-success"
-          style="color: white; background-color: rgb(4, 4, 138)"
-          type="submit"
-        >
-          Search
-        </button>
-      </form>
-    </div>
+        Search
+      </button>
+    </form>
+  </div>
 
-    <h2>Enter car model here:</h2>
-    <div>
-      <form
-        #modelForm="ngForm"
-        class="d-flex"
-        role="search"
-        (ngSubmit)="searchModel(modelForm)"
+  <h2>Enter car model here:</h2>
+  <div>
+    <form
+      #modelForm="ngForm"
+      class="d-flex"
+      role="search"
+      (ngSubmit)="searchModel(modelForm)"
+    >
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Model..."
+        aria-label="Search"
+        name="model"
+        ngModel
+        #inputModelSearch="ngModel"
+      />
+      <button
+        class="btn btn-outline-success"
+        style="color: white; background-color: rgb(4, 4, 138)"
+        type="submit"
       >
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Model..."
-          aria-label="Search"
-          name="model"
-          ngModel
-          #inputModelSearch="ngModel"
-        />
-        <button
-          class="btn btn-outline-success"
-          style="color: white; background-color: rgb(4, 4, 138)"
-          type="submit"
-        >
-          Search
-        </button>
-      </form>
-    </div>
+        Search
+      </button>
+    </form>
+  </div>
 
-    <h1  *ngIf="!hasResult">Unfortunately Nothing was found!</h1>
+  <h1 *ngIf="!hasResult" style="color: red;">Unfortunately Nothing was found!</h1>
 
-    <div *ngIf="filteredCars.length > 0" class="row" style="gap: 1rem;">
-
-      <div class="card" style="width: 18rem;" *ngFor="let car of filteredCars">
-        <img src={{car.image}} class="card-img-top"  style="height: 60%;" alt="...">
-        <div class="card-body" style="height: 40%;">
-          <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
-          <p class="card-text">{{car.description | shortenText}}</p>
-          <p class="card-text">Added by: {{car.owner.username}}</p>
-          <a routerLink="/cars/{{car._id}}/details" class="btn btn-primary">Details</a>
-        </div>
-      </div>
-
-
-    </div>
-
-  </app-hero>
+  <div *ngIf="filteredCars.length > 0" class="row" style="gap: 1rem">
+    <app-car-card
+      [car]="car"
+      *ngFor="let car of filteredCars"
+      class="card"
+      style="width: 18rem"
+    />
+  </div>
+</app-hero>

@@ -18,6 +18,7 @@ export class MyCarsComponent implements OnInit {
   username: String | undefined;
 
   isLoading: boolean = true;
+  onMyCars: boolean = true;
 
   private subscription: Subscription | undefined;
 
