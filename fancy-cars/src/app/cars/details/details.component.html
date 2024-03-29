@@ -73,6 +73,11 @@
               </button>
             </p>
           </div>
+
+          <div class="project-info-box mt-0 mb-0" *ngIf="!hasUser">
+            <p routerLink="/user/register" style="font-weight: bolder; cursor: pointer;" >Want to give this car a thumbs up? Register here!</p>
+          </div>
+
         </div>
 
         <div class="col-md-7">
@@ -80,5 +85,6 @@
         </div>
       </div>
     </div>
+    
   </div>
 </app-hero>

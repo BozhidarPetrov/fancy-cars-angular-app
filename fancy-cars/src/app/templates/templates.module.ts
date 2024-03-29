@@ -4,6 +4,7 @@ import { HeroComponent } from './hero/hero.component';
 import { LoaderComponent } from './loader/loader.component';
 import { CarCardComponent } from './car-card/car-card.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ShortenTextPipe } from '../pipes/shortenText.pipe';
 
 
 
@@ -11,7 +12,8 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     HeroComponent,
     LoaderComponent,
-    CarCardComponent
+    CarCardComponent,
+    ShortenTextPipe
 
   ],
   imports: [

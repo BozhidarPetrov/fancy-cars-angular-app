@@ -1,11 +1,10 @@
 
-    <div >
-      <img src={{car.image}} class="card-img-top"  style="height: 60%;" alt="...">
-      <div class="card-body" style="height: 40%;">
+      <img src={{car.image}} class="card-img-top" alt="..."/>
+      <div class="card-body" >
 
         <div *ngIf="!onMyCars">
             <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
-            <p class="card-text">{{car.description }}</p>
+            <p class="card-text">{{car.description | shortenText}}</p>
             <p class="card-text">Added by: {{car.owner.username}}</p>
         </div>
 
@@ -15,4 +14,4 @@
        
         <a routerLink="/cars/{{car._id}}/details" class="btn btn-primary">Details</a>
       </div>
-    </div>
+
