@@ -14,3 +14,5 @@ Users have access to Home, My Cars, Add Car, Car Details(with Like, Edit and Del
 
 The input is validated both on the front and back-end and error handling has been applied, so even if an error occurs - the application will not crash.
 
+The Login, Register and Add New Car forms are HTML ones. The Edit Car form is a Reactive one - for practicing both types. The HTML version of it (.html and .ts files) are kept - for comparison.
+
