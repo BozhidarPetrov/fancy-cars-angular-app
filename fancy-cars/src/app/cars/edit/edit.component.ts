@@ -20,21 +20,6 @@ export class EditComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
 
   carId: string = '';
-  // car: CarFromMongo = {
-  //   _id: '',
-  //   description: '',
-  //   brand: '',
-  //   model: '',
-  //   engine: '',
-  //   horsepower: 0,
-  //   fuel: '',
-  //   color: '',
-  //   year: 0,
-  //   image: '',
-  //   likes: [],
-  //   owner: { _id: '', username: '', email: '', hashedPassword: '', __v: 0 },
-  //   __v: 0,
-  // };
 
   car = {
     description: '',
@@ -85,8 +70,7 @@ export class EditComponent implements OnInit, OnDestroy {
         fuel,
         color,
         +year,
-        image,
-        this.owner
+        image
       )
       .subscribe(() => {
         this.router.navigate([`/cars/${this.carId}/details`]);
@@ -120,27 +104,7 @@ export class EditComponent implements OnInit, OnDestroy {
           year: car.year,
           image: car.image,
         };
-        // this.car = {
-        //   _id: car._id,
-        //   description: car.description,
-        //   brand: car.brand,
-        //   model: car.model,
-        //   engine: car.engine,
-        //   horsepower: car.horsepower,
-        //   fuel: car.fuel,
-        //   color: car.color,
-        //   year: car.year,
-        //   image: car.image,
-        //   likes: car.likes,
-        //   owner: {
-        //     _id: car.owner._id,
-        //     username: car.owner.username,
-        //     email: car.owner.email,
-        //     hashedPassword: car.owner.hashedPassword,
-        //     __v: car.owner.__v,
-        //   },
-        //   __v: car.__v,
-        // };
+       
         this.isLoading = false;
 
         if (car.owner._id === this.userIdtemp) {

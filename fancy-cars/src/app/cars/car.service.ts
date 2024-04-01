@@ -48,7 +48,7 @@ export class CarService {
     color: string,
     year: number,
     image: string,
-    owner: UserData
+   
   ) {
     return this.http.post<Car>(`http://localhost:3030/cars/${carId}/edit`, {
       description,
@@ -60,7 +60,7 @@ export class CarService {
       color,
       year,
       image,
-      owner,
+    
     });
   }
 
