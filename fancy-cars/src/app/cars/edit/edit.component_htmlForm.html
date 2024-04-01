@@ -1,0 +1,361 @@
+<app-hero>
+    <h1 *ngIf="hasError" style="color: red">WRONG CAR ID</h1>
+    <h2 *ngIf="hasError" style="color: red">
+      Please, go back to the previous page!
+    </h2>
+    <h1>EDIT YOUR CAR</h1>
+    <h2>PLEASE USE THE BELOW FORM:</h2>
+
+    <div *ngIf="isLoading">
+      <app-loader/>
+      </div>
+
+    <h1 *ngIf="!isOwner" style="color: red;">YOU SHOULD NOT BE HERE!</h1>
+
+    <div *ngIf="isOwner">
+      <form
+        #form="ngForm"
+        (ngSubmit)="onEditSubmitHandler(form)"
+        *ngIf="!isLoading"
+      >
+        <div class="form-group">
+          <label
+            for="exampleInputBrand"
+            style="color: black; font-weight: bolder"
+            >Description</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputDescription"
+            aria-describedby="descriptionHelp"
+            name="description"
+            placeholder="Car description"
+            required
+            minlength="10"
+            maxlength="20"
+            [(ngModel)]="car.description"
+            #inputDescription="ngModel"
+          />
+
+          <div *ngIf="inputDescription.touched">
+            <p
+              class="error"
+              *ngIf="inputDescription.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Description is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputDescription.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Description length must be at least
+              {{inputDescription.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputBrand"
+            style="color: black; font-weight: bolder"
+            >Brand</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputBrand"
+            aria-describedby="brandHelp"
+            name="brand"
+            placeholder="Car brand"
+            required
+            minlength="3"
+            [(ngModel)]="car.brand"
+            #inputBrand="ngModel"
+          />
+
+          <div *ngIf="inputBrand.touched">
+            <p
+              class="error"
+              *ngIf="inputBrand.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Brand is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputBrand.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Brand length must be at least
+              {{inputBrand.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputModel"
+            style="color: black; font-weight: bolder"
+            >Model</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputModel"
+            aria-describedby="modelHelp"
+            name="model"
+            placeholder="Car model"
+            required
+            minlength="2"
+            [(ngModel)]="car.model"
+            #inputModel="ngModel"
+          />
+
+          <div *ngIf="inputModel.touched">
+            <p
+              class="error"
+              *ngIf="inputModel.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Model is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputModel.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Model length must be at least
+              {{inputModel.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputEngine"
+            style="color: black; font-weight: bolder"
+            >Engine Type</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputEngine"
+            aria-describedby="engineHelp"
+            name="engine"
+            placeholder="Engine type"
+            required
+            minlength="2"
+            [(ngModel)]="car.engine"
+            #inputEngine="ngModel"
+          />
+
+          <div *ngIf="inputEngine.touched">
+            <p
+              class="error"
+              *ngIf="inputEngine.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Engine is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputEngine.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Engine length must be at least
+              {{inputEngine.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputPower"
+            style="color: black; font-weight: bolder"
+            >Horsepower</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputPower"
+            aria-describedby="powerHelp"
+            name="horsepower"
+            placeholder="Horsepower"
+            required
+            min="1"
+            [(ngModel)]="car.horsepower"
+            #inputHorsePower="ngModel"
+          />
+
+          <div *ngIf="inputHorsePower.touched">
+            <p
+              class="error"
+              *ngIf="inputHorsePower.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Horsepower is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputHorsePower.errors?.['min']"
+              style="color: red; font-weight: bolder"
+            >
+              Horsepowe can't be 0!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputFuel"
+            style="color: black; font-weight: bolder"
+            >Fuel</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputFuel"
+            aria-describedby="fuelHelp"
+            name="fuel"
+            placeholder="Fuel"
+            required
+            minlength="3"
+            [(ngModel)]="car.fuel"
+            #inputFuel="ngModel"
+          />
+
+          <div *ngIf="inputFuel.touched">
+            <p
+              class="error"
+              *ngIf="inputFuel.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Fuel type is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputFuel.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Fuel length must be at least
+              {{inputFuel.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputColor"
+            style="color: black; font-weight: bolder"
+            >Color</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputColor"
+            aria-describedby="colorHelp"
+            name="color"
+            placeholder="Color"
+            required
+            minlength="3"
+            [(ngModel)]="car.color"
+            #inputColor="ngModel"
+          />
+
+          <div *ngIf="inputColor.touched">
+            <p
+              class="error"
+              *ngIf="inputColor.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Color is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputColor.errors?.['minlength']"
+              style="color: red; font-weight: bolder"
+            >
+              Color length must be at least
+              {{inputColor.errors?.['minlength']['requiredLength']}}!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputYear"
+            style="color: black; font-weight: bolder"
+            >Year</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="exampleInputYearHelp"
+            name="year"
+            placeholder="Year"
+            required
+            min="1900"
+            [(ngModel)]="car.year"
+            #inputYear="ngModel"
+          />
+
+          <div *ngIf="inputYear.touched">
+            <p
+              class="error"
+              *ngIf="inputYear.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Year is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="inputYear.errors?.['min']"
+              style="color: red; font-weight: bolder"
+            >
+              Car can't be older than 1900!
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            for="exampleInputImageUrl"
+            style="color: black; font-weight: bolder"
+            >Image URL</label
+          >
+          <input
+            type="string"
+            class="form-control"
+            id="exampleInputimageUrlHelp"
+            name="image"
+            placeholder="Image URL"
+            required
+            [(ngModel)]="car.image"
+            #inputimageUrl="ngModel"
+          />
+
+          <div *ngIf="inputimageUrl.touched">
+            <p
+              class="error"
+              *ngIf="inputimageUrl.errors?.['required']"
+              style="color: red; font-weight: bolder"
+            >
+              Image URL is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="!carImageValidator(inputimageUrl.value)"
+              style="color: red; font-weight: bolder"
+            >
+              Image URL must start with http:// or https://!
+            </p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </app-hero>

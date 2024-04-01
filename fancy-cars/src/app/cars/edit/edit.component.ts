@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { CarFromMongo } from '../../types/CarFromMongo';
+import { FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../car.service';
 import { Subscription } from 'rxjs';
@@ -13,6 +12,21 @@ import { UserService } from '../../user/user.service';
   styleUrl: './edit.component.css',
 })
 export class EditComponent implements OnInit, OnDestroy {
+  form = this.formBuilder.group({
+    description: [
+      '',
+      [Validators.required, Validators.minLength(10), Validators.maxLength(20)],
+    ],
+    brand: ['', [Validators.required, Validators.minLength(3)]],
+    model: ['', [Validators.required, Validators.minLength(2)]],
+    engine: ['', [Validators.required, Validators.minLength(2)]],
+    horsepower: [0, [Validators.required, Validators.min(1)]],
+    fuel: ['', [Validators.required, Validators.minLength(3)]],
+    color: ['', [Validators.required, Validators.minLength(3)]],
+    year: [0, [Validators.required, Validators.min(1900)]],
+    image: ['', [Validators.required, this.carImageValidator('image')]],
+  });
+
   userIdtemp: string | undefined;
   owner: UserData = { _id: '' };
   isOwner: boolean | undefined;
@@ -21,28 +35,17 @@ export class EditComponent implements OnInit, OnDestroy {
 
   carId: string = '';
 
-  car = {
-    description: '',
-    brand: '',
-    model: '',
-    engine: '',
-    horsepower: 0,
-    fuel: '',
-    color: '',
-    year: 0,
-    image: '', 
-  };
-
   hasError: boolean = false;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private carService: CarService,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) {}
 
-  onEditSubmitHandler(form: NgForm) {
+  onEditSubmitHandler() {
     const {
       description,
       brand,
@@ -53,58 +56,72 @@ export class EditComponent implements OnInit, OnDestroy {
       color,
       year,
       image,
-    } = form.value;
+    } = this.form.value;
 
-    if (form.invalid) {
+    if (this.form.invalid) {
       return;
     }
 
-    this.carService
-      .updateCar(
-        this.carId,
-        description,
-        brand,
-        model,
-        engine,
-        +horsepower,
-        fuel,
-        color,
-        +year,
-        image
-      )
-      .subscribe(() => {
-        this.router.navigate([`/cars/${this.carId}/details`]);
-      });
+    if (
+      description &&
+      brand &&
+      model &&
+      engine &&
+      horsepower &&
+      fuel &&
+      color &&
+      year &&
+      image
+    ) {
+      this.carService
+        .updateCar(
+          this.carId,
+          description,
+          brand,
+          model,
+          engine,
+          horsepower,
+          fuel,
+          color,
+          year,
+          image
+        )
+        .subscribe(() => {
+          this.router.navigate([`/cars/${this.carId}/details`]);
+        });
+    }
   }
 
-  carImageValidator(imageUrl: string): boolean {
+  carImageValidator(imageUrl: string): ValidatorFn {
     const pattern = /^https?:\/\/(.+)$/;
 
-    return pattern.test(imageUrl);
+    return (control) => {
+      return control.value === '' || pattern.test(control.value)
+        ? null
+        : { carImageValidator: true };
+    };
   }
 
   ngOnInit(): void {
     this.subscription = this.userService.user$.subscribe((user) => {
       this.userIdtemp = user?._id;
-    });
+
     this.owner._id = this.userIdtemp;
 
     this.carId = this.activatedRoute.snapshot.url[0].path;
 
     this.carService.getSingleCar(this.carId).subscribe({
       next: (car) => {
-        this.car = {
-          description: car.description,
-          brand: car.brand,
-          model: car.model,
-          engine: car.engine,
-          horsepower: car.horsepower,
-          fuel: car.fuel,
-          color: car.color,
-          year: car.year,
-          image: car.image,
-        };
-       
+        this.form.get('description')?.setValue(car.description);
+        this.form.get('brand')?.setValue(car.brand);
+        this.form.get('model')?.setValue(car.model);
+        this.form.get('engine')?.setValue(car.engine);
+        this.form.get('horsepower')?.setValue(car.horsepower);
+        this.form.get('fuel')?.setValue(car.fuel);
+        this.form.get('color')?.setValue(car.color);
+        this.form.get('year')?.setValue(car.year);
+        this.form.get('image')?.setValue(car.image);
+
         this.isLoading = false;
 
         if (car.owner._id === this.userIdtemp) {
@@ -117,6 +134,7 @@ export class EditComponent implements OnInit, OnDestroy {
         this.hasError = true;
       },
     });
+});
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { AllCarsComponent } from './all-cars/all-cars.component';
 import { AddNewComponent } from './add-new/add-new.component';
@@ -17,6 +17,6 @@ import { TemplatesModule } from '../templates/templates.module';
     SearchComponent,
     EditComponent,
   ],
-  imports: [CommonModule, FormsModule, AppRoutingModule, TemplatesModule],
+  imports: [CommonModule, FormsModule, AppRoutingModule, TemplatesModule, ReactiveFormsModule],
 })
 export class CarsModule {}
