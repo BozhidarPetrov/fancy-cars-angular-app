@@ -51,7 +51,7 @@ const carSchema = new Schema({
     },
   },
   likes: { type: [ObjectId], ref: "User", default: [] },
-  owner: { type: ObjectId, ref: "User" },
+  owner: { type: ObjectId, ref: "User", required: [true, 'Car owner is required!'] },
 });
 
 const Car = model("Car", carSchema);
