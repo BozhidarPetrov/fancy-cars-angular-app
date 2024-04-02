@@ -4,15 +4,18 @@
       <app-loader />
     </div>
 
-    <h1>Full list of all our users awesome cars</h1>
+    <h1 *ngIf="allCars.length > 0">Full list of all our users awesome cars</h1>
+    <h1 *ngIf="allCars.length < 1">No cars have been added yet...</h1>
 
-    <div *ngIf="!isLoading" class="row">
-      <app-car-card
-        [car]="car"
-        *ngFor="let car of allCars"
-        class="card"
-        style="width: 18rem"
-      />
+    <div *ngIf="allCars.length > 0">
+      <div *ngIf="!isLoading" class="row">
+        <app-car-card
+          [car]="car"
+          *ngFor="let car of allCars"
+          class="card"
+          style="width: 18rem"
+        />
+      </div>
     </div>
   </div>
 </app-hero>

@@ -10,7 +10,7 @@
     <a routerLink="/cars/all" class="btn btn-primary">Go to All Cars</a>
   </div>
 
-  <div class="hero-container" data-aos="fade-up" *ngIf="!hasError">
+  <div  *ngIf="!hasError">
     <h1>{{ car?.brand }} {{ car?.model }}</h1>
     <link
       rel="stylesheet"
