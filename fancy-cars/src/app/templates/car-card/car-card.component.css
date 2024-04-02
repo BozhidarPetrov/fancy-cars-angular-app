@@ -1,12 +1,12 @@
-.card-img-top{
- height: 60%;
+.card-img-top {
+  height: 60%;
 }
 
-.card-body{
-   height: 40%;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   flex-direction: column;
- 
+.card-body {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0;
 }

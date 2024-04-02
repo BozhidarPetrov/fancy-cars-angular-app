@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../types/Car';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+
 import { UserData } from '../types/UserData';
 import { CarFromMongo } from '../types/CarFromMongo';
 
@@ -47,8 +47,7 @@ export class CarService {
     fuel: string,
     color: string,
     year: number,
-    image: string,
-   
+    image: string
   ) {
     return this.http.post<Car>(`http://localhost:3030/cars/${carId}/edit`, {
       description,
@@ -60,7 +59,6 @@ export class CarService {
       color,
       year,
       image,
-    
     });
   }
 

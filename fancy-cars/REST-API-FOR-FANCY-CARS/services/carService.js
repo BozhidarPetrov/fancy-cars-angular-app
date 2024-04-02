@@ -38,7 +38,6 @@ async function update(id, car) {
   existing.color = car.color;
   existing.year = car.year;
   existing.image = car.image;
- 
 
   await existing.save();
 

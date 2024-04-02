@@ -24,7 +24,7 @@ import { TemplatesModule } from './templates/templates.module';
     CarsModule,
     UserModule,
     HttpClientModule,
-    TemplatesModule
+    TemplatesModule,
   ],
   providers: [provideClientHydration(), CookieService],
   bootstrap: [AppComponent],

@@ -17,6 +17,12 @@ import { TemplatesModule } from '../templates/templates.module';
     SearchComponent,
     EditComponent,
   ],
-  imports: [CommonModule, FormsModule, AppRoutingModule, TemplatesModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppRoutingModule,
+    TemplatesModule,
+    ReactiveFormsModule,
+  ],
 })
 export class CarsModule {}

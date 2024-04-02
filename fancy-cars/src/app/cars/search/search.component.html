@@ -60,10 +60,12 @@
     </form>
   </div>
 
-  <h1 *ngIf="!hasResult" style="color: red;">Unfortunately Nothing was found!</h1>
+  <h1 *ngIf="!hasResult" style="color: red">
+    Unfortunately Nothing was found!
+  </h1>
 
-  <div *ngIf="filteredCars.length > 0" class="row" style="gap: 1rem">
-    <h1 style="color: greenyellow;">Results for '{{resultCriteria}}'</h1>
+  <div *ngIf="filteredCars.length > 0" class="row">
+    <h1 style="color: greenyellow">Results for '{{ resultCriteria }}'</h1>
     <app-car-card
       [car]="car"
       *ngFor="let car of filteredCars"

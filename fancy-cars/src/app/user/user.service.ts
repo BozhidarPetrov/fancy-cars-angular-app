@@ -1,5 +1,4 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { User } from '../types/User';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { RegisteredUser } from '../types/registeredUser';

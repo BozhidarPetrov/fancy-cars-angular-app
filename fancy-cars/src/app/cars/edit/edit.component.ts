@@ -106,35 +106,35 @@ export class EditComponent implements OnInit, OnDestroy {
     this.subscription = this.userService.user$.subscribe((user) => {
       this.userIdtemp = user?._id;
 
-    this.owner._id = this.userIdtemp;
+      this.owner._id = this.userIdtemp;
 
-    this.carId = this.activatedRoute.snapshot.url[0].path;
+      this.carId = this.activatedRoute.snapshot.url[0].path;
 
-    this.carService.getSingleCar(this.carId).subscribe({
-      next: (car) => {
-        this.form.get('description')?.setValue(car.description);
-        this.form.get('brand')?.setValue(car.brand);
-        this.form.get('model')?.setValue(car.model);
-        this.form.get('engine')?.setValue(car.engine);
-        this.form.get('horsepower')?.setValue(car.horsepower);
-        this.form.get('fuel')?.setValue(car.fuel);
-        this.form.get('color')?.setValue(car.color);
-        this.form.get('year')?.setValue(car.year);
-        this.form.get('image')?.setValue(car.image);
+      this.carService.getSingleCar(this.carId).subscribe({
+        next: (car) => {
+          this.form.get('description')?.setValue(car.description);
+          this.form.get('brand')?.setValue(car.brand);
+          this.form.get('model')?.setValue(car.model);
+          this.form.get('engine')?.setValue(car.engine);
+          this.form.get('horsepower')?.setValue(car.horsepower);
+          this.form.get('fuel')?.setValue(car.fuel);
+          this.form.get('color')?.setValue(car.color);
+          this.form.get('year')?.setValue(car.year);
+          this.form.get('image')?.setValue(car.image);
 
-        this.isLoading = false;
+          this.isLoading = false;
 
-        if (car.owner._id === this.userIdtemp) {
-          this.isOwner = true;
-        }
-      },
-      error: (err) => {
-        console.error(`Error: ${err.message}`);
-        this.isLoading = false;
-        this.hasError = true;
-      },
+          if (car.owner._id === this.userIdtemp) {
+            this.isOwner = true;
+          }
+        },
+        error: (err) => {
+          console.error(`Error: ${err.message}`);
+          this.isLoading = false;
+          this.hasError = true;
+        },
+      });
     });
-});
   }
 
   ngOnDestroy(): void {

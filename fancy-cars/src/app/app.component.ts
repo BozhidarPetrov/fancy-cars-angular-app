@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieManagerService } from './cookie-manager.service';
 import { UserService } from './user/user.service';
 import { RegisteredUser } from './types/registeredUser';

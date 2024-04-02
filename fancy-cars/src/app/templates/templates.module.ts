@@ -6,19 +6,14 @@ import { CarCardComponent } from './car-card/car-card.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ShortenTextPipe } from '../pipes/shortenText.pipe';
 
-
-
 @NgModule({
   declarations: [
     HeroComponent,
     LoaderComponent,
     CarCardComponent,
-    ShortenTextPipe
-
+    ShortenTextPipe,
   ],
-  imports: [
-    CommonModule, AppRoutingModule
-  ],
-  exports: [HeroComponent, LoaderComponent, CarCardComponent]
+  imports: [CommonModule, AppRoutingModule],
+  exports: [HeroComponent, LoaderComponent, CarCardComponent],
 })
-export class TemplatesModule { }
+export class TemplatesModule {}

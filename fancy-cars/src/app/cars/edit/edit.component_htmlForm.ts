@@ -30,7 +30,7 @@ export class EditComponent implements OnInit, OnDestroy {
     fuel: '',
     color: '',
     year: 0,
-    image: '', 
+    image: '',
   };
 
   hasError: boolean = false;
@@ -104,7 +104,7 @@ export class EditComponent implements OnInit, OnDestroy {
           year: car.year,
           image: car.image,
         };
-       
+
         this.isLoading = false;
 
         if (car.owner._id === this.userIdtemp) {

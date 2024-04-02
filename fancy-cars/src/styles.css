@@ -2,93 +2,107 @@
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2));
-    background-size: cover;
-    position: relative;
-    margin-bottom: -90px;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2));
+  background-size: cover;
+  position: relative;
+  margin-bottom: -90px;
+}
+
+#hero .hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: -1px 0 2px #2f4d5a;
+}
+
+#hero h2 {
+  color: #fff;
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: -1px 0 2px #2f4d5a;
+}
+.row {
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+.card {
+  width: 18rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border-radius: 2%;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
   }
-  
-  #hero .hero-container {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
-  
+}
+
+@media (max-width: 768px) {
   #hero h1 {
-    margin: 0 0 10px 0;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 56px;
-    text-transform: uppercase;
-    color: #fff;
-    text-shadow: -1px 0 2px #2f4d5a;
+    font-size: 28px;
+    line-height: 36px;
   }
-  
+
   #hero h2 {
-    color: #fff;
-    margin-bottom: 50px;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 700;
-    text-shadow: -1px 0 2px #2f4d5a;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
   }
+}
 
-  
-  @media (min-width: 1024px) {
-    #hero {
-      background-attachment: fixed;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    #hero h1 {
-      font-size: 28px;
-      line-height: 36px;
-    }
-  
-    #hero h2 {
-      font-size: 18px;
-      line-height: 24px;
-      margin-bottom: 30px;
-    }
-  }
-  
-
-  
 /* LOADER */
 
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
-}
-100% {
+  }
+  100% {
     -webkit-transform: rotate(360deg);
-}
+  }
 }
 @-moz-keyframes spin {
   0% {
     -moz-transform: rotate(0deg);
-}
-100% {
+  }
+  100% {
     -moz-transform: rotate(360deg);
-}
+  }
 }
 @-o-keyframes spin {
   0% {
     -o-transform: rotate(0deg);
-}
-100% {
+  }
+  100% {
     -o-transform: rotate(360deg);
-}
+  }
 }
 @keyframes spin {
   0% {
@@ -96,13 +110,13 @@
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
-}
-100% {
+  }
+  100% {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
-}
+  }
 }
 .loading-container {
   z-index: 2000;
@@ -111,7 +125,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, .55);
+  background: rgba(0, 0, 0, 0.55);
 }
 .loading-container.loading-inactive {
   display: none;
@@ -136,7 +150,7 @@
   -o-animation: spin 30s infinite linear;
   animation: spin 30s infinite linear;
 }
-.loading-container .loading-progress>.rotator {
+.loading-container .loading-progress > .rotator {
   left: -100px;
 }
 .loading-container .rotator {
@@ -146,11 +160,11 @@
   background-color: #fff;
   width: 200px;
   height: 7px;
-  opacity: .75;
+  opacity: 0.75;
   position: absolute;
   top: 0;
   left: 0;
 }
 .loading-container .colored {
-  background-color: #2dc3e8!important;
+  background-color: #2dc3e8 !important;
 }

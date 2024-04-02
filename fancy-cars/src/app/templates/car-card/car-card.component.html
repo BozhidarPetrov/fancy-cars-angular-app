@@ -1,17 +1,16 @@
+<img src="{{ car.image }}" class="card-img-top" alt="..." />
+<div class="card-body">
+  <div *ngIf="!onMyCars">
+    <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+    <p class="card-text">{{ car.description | shortenText }}</p>
+    <p class="card-text">Added by: {{ car.owner.username }}</p>
+  </div>
 
-      <img src={{car.image}} class="card-img-top" alt="..."/>
-      <div class="card-body" >
+  <div *ngIf="onMyCars">
+    <h5 class="card-title">My awesome {{ car.brand }} {{ car.model }}</h5>
+  </div>
 
-        <div *ngIf="!onMyCars">
-            <h5 class="card-title">{{car.brand}} {{car.model}}</h5>
-            <p class="card-text">{{car.description | shortenText}}</p>
-            <p class="card-text">Added by: {{car.owner.username}}</p>
-        </div>
-
-        <div *ngIf="onMyCars">
-            <h5 class="card-title">My awesome {{car.brand}} {{car.model}}</h5>
-        </div>
-       
-        <a routerLink="/cars/{{car._id}}/details" class="btn btn-primary">Details</a>
-      </div>
-
+  <a routerLink="/cars/{{ car._id }}/details" class="btn btn-primary"
+    >Details</a
+  >
+</div>

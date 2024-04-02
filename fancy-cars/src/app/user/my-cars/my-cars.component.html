@@ -6,7 +6,7 @@
   </div>
 
   <div class="center" *ngIf="myCars.length !== 0">
-    <div *ngIf="!isLoading" class="row" style="gap: 1rem">
+    <div *ngIf="!isLoading" class="row">
       <app-car-card
         [car]="car"
         [onMyCars]="onMyCars"

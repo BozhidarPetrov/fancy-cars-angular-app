@@ -1,64 +1,78 @@
 <app-hero>
-    <h1>Hello, Fancy Cars Guest!</h1>
-    <h2>Please log-in by using the below form:</h2>
+  <h1>Hello, Fancy Cars Guest!</h1>
+  <h2>Please log-in by using the below form:</h2>
 
-    <h2 *ngIf="backendErrorMsg" style="color: red;">{{backendErrorMsg}}</h2>
+  <h2 *ngIf="backendErrorMsg" style="color: red">{{ backendErrorMsg }}</h2>
 
-    <form #form="ngForm" (ngSubmit)="onLoginSubmitHandler(form)">
-      <div class="form-group">
-        <label for="exampleInputEmail1" style="color: black; font-weight: bolder;">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          name="email"
-          placeholder="Enter email"
-          required
-          ngModel
-          #inputEmail="ngModel"
-        />
-    
-        <div *ngIf="inputEmail.touched">
-          <p class="error" style="color: red; font-weight: bolder;" *ngIf="inputEmail.errors?.['required']">
-            Email is required!
-          </p>
-          <p
-            class="error"
-            style="color: red; font-weight: bolder;"
-            *ngIf="!emailValidatorFn(inputEmail.value) && !inputEmail.errors?.['required']"
-          >
-            Email is invalid!
-          </p>
-        </div>
+  <form #form="ngForm" (ngSubmit)="onLoginSubmitHandler(form)">
+    <div class="form-group">
+      <label for="exampleInputEmail1" style="color: black; font-weight: bolder"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+        placeholder="Enter email"
+        required
+        ngModel
+        #inputEmail="ngModel"
+      />
+
+      <div *ngIf="inputEmail.touched">
+        <p
+          class="error"
+          style="color: red; font-weight: bolder"
+          *ngIf="inputEmail.errors?.['required']"
+        >
+          Email is required!
+        </p>
+        <p
+          class="error"
+          style="color: red; font-weight: bolder"
+          *ngIf="!emailValidatorFn(inputEmail.value) && !inputEmail.errors?.['required']"
+        >
+          Email is invalid!
+        </p>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1" style="color: black; font-weight: bolder;">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          name="password"
-          placeholder="Password"
-          required
-          ngModel
-          #inputPassword="ngModel"
-        />
-    
-        <div *ngIf="inputPassword.touched">
-          <p class="error" style="color: red; font-weight: bolder;" *ngIf="inputPassword.errors?.['required']">
-            Password is required!
-          </p>
-        </div>
+    </div>
+    <div class="form-group">
+      <label
+        for="exampleInputPassword1"
+        style="color: black; font-weight: bolder"
+        >Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="password"
+        placeholder="Password"
+        required
+        ngModel
+        #inputPassword="ngModel"
+      />
+
+      <div *ngIf="inputPassword.touched">
+        <p
+          class="error"
+          style="color: red; font-weight: bolder"
+          *ngIf="inputPassword.errors?.['required']"
+        >
+          Password is required!
+        </p>
       </div>
-    
-      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 
-      <h2 routerLink="/user/register" style="cursor: pointer; color:rgba(255, 162, 0, 0.804);">Not registered yet? Click here to register!</h2>
+    <button type="submit" class="btn btn-primary">Submit</button>
 
-    </form>
-  </app-hero>
-
-
-
-
+    <h2
+      routerLink="/user/register"
+      style="cursor: pointer; color: rgba(255, 162, 0, 0.804)"
+    >
+      Not registered yet? Click here to register!
+    </h2>
+  </form>
+</app-hero>

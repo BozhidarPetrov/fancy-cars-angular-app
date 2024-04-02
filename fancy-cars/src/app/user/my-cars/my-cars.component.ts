@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { CarFromMongo } from '../../types/CarFromMongo';
 import { CarService } from '../../cars/car.service';
-import { Car } from '../../types/Car';
 import { Subscription } from 'rxjs';
 
 @Component({
