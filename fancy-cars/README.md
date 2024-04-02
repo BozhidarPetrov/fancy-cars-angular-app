@@ -17,3 +17,5 @@ The input is validated both on the front and back-end and error handling has bee
 
 The Login, Register and Add New Car forms are HTML ones. The Edit Car form is a Reactive one - for practicing both types. The HTML version of it (.html and .ts files) are kept - for comparison.
 
+IMPORTANT - if you are having back-end connectivity issues - the connectionString in the database.js file needs to be changed from mongodb://localhost:27017/${dbName} to mongodb://127.0.0.1:27017/${dbName} !
+

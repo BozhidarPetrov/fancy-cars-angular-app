@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const dbName = "cars";
 const connectionString = `mongodb://localhost:27017/${dbName}`;
+// const connectionString = `mongodb://127.0.0.1:27017/${dbName}`; USE THIS IF YOU ARE HAVING DB CONNECTION ISSUES!
+
 
 require("../models/User");
 require("../models/Car");
