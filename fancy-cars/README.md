@@ -3,6 +3,7 @@ This is my Angular project for the Soft Uni project defense and first Angular ap
 The application is located in the "src" folder and the REST API is in the "REST-API-FOR-FANCY-CARS" folder.
 The back-end uses Express JS, Mongoose, Bcrypt for hashing the passwords and JWT for generating tokens. It is started with "node index.js" in the terminal.
 The front-end uses Angular and the design is made with Bootstrap, with focusing on reusable HTML and CSS. It is started with "ng s" in the terminal.
+'npm install' must be performed in the terminal for both the back and front-end, so the application can work.
 
 The aplication is a basic social network for car enthusiasts, where they can upload their own and like other people's cars.
 
