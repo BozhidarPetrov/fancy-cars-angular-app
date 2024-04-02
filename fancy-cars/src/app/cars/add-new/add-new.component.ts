@@ -36,7 +36,7 @@ export class AddNewComponent implements OnInit, OnDestroy {
       image,
     } = form.value;
 
-    if (form.invalid) {
+    if (form.invalid || !this.carImageValidator(image)) {
       return;
     }
 
